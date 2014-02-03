@@ -1,0 +1,88 @@
+/* !GREEN */
+#account {
+	background: #6B7D2B url(../../images/green/account_background_gradient.png);
+}
+#basket_summary a{
+	background:url(../../images/green/count.png) repeat-x -2px -5px #D48A35;
+	border:2px solid #FFFFFF;
+}
+#header {
+	background: #8CA337 url(../../images/green/header_background_gradient.png);
+    border-bottom: 1px solid #627D42;
+    border-top: 1px solid #C5E083;
+}
+#quick_search input.search {
+	background-image: url(../../images/green/button_search.png);
+}
+#quick_search input.search {
+	background: transparent no-repeat;
+	border: 0px;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	height: 30px;
+	text-shadow: #6374AB 2px 2px 2px;
+	width: 90px;
+}
+#documents {
+	border-top: 1px solid #EAEAEA;
+}
+a {
+	color: #9A7733;
+}
+h2, h3, h4{
+	background-color: #E2E6D5;
+	color: #4F4F4F;
+	padding: 8px;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+h2 {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+#menu li > a {
+	border-bottom: 1px solid #EEEEEE;
+}
+#menu > li > a {
+	border-top: 1px solid #FFFFFF;
+}
+#menu > li > a:hover {
+	color:#000;
+	text-decoration:none;
+}
+div.category_product {
+	background: url(../../images/green/background_info_box.png) repeat-x left top;
+	border-top: 1px solid #E2E6D5;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+	-webkit-box-shadow: 0 1px 0 #FFFFFF inset
+}
+#product_detail {
+	background-image: url(../../images/green/background_info_box.png);
+}
+#product_detail > .options {
+	border-top: 1px solid #E2E6D5;
+}
+#product_share {
+	background-image: url(../../images/green/background_info_box.png);
+}
+.basket_header {
+	background-color: #70822C;
+	height: 25px;
+    line-height: 25px;
+}
+.cart_item_details{margin-left:60px;}
+.total {
+	background-color: #70822C;
+}
+a.button_submit {
+	vertical-align: top;
+}
+.button_submit.right, input[type="submit"].right, input[type="reset"].right {
+	float: right;
+	margin-left: 5px;
+}
+.button_white, .button_submit, .main #submit {
+	background: url(../../images/green/header_background_gradient.png) repeat-x scroll left top #8CA337;
+    border: 1px solid #627D42;
+    -webkit-box-shadow: 0 1px 0 #C5E083 inset;
+}

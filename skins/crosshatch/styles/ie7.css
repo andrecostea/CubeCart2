@@ -1,0 +1,7 @@
+#header .headerSelects {
+    width: 540px!important
+}
+
+.select select {
+    width: auto!important
+}

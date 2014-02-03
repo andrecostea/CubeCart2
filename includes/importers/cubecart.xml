@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<import version="1.0">
+  <info>
+	<title><![CDATA[CubeCart]]></title>
+	<delimiter><![CDATA[,]]></delimiter>
+	<headers>true</headers>
+  </info>
+  <structure>
+	<field column="name" required="true" />
+	<field column="product_code" />
+	<field column="description" />
+	<field column="price" required="true" />
+	<field column="sale_price" />
+	<field column="image" />
+	<field column="stock_level" default="0" />
+	<field column="use_stock_level" default="0" />
+	<field column="cat_id" default="0" />
+	<field column="manufacturer" default="0" />
+  </structure>  
+</import>

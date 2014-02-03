@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<import version="1.0">
+  <info>
+	<title><![CDATA[CS-Cart (Please select delimiter)]]></title>
+	<headers>true</headers>
+	<polymorphic>true</polymorphic>
+  </info>
+  <structure>
+	<field source="avail" column="status" type="bool" true="Y" />
+	<field source="product_code" column="product_code" required="true" />
+	<field source="product" column="name" required="true" />
+	<field source="price" column="price" required="true" />
+	<field source="amount" column="stock_level" />
+	<field source="weight" column="weight" />
+	<field source="full_description" column="description" />
+	<field source="meta_keywords" column="seo_meta_keywords" />
+	<field source="meta_description" column="seo_meta_description" />
+  </structure>  
+</import>

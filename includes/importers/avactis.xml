@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<import version="1.0">
+  <info>
+	<title><![CDATA[Avactis]]></title>
+	<delimiter><![CDATA[;]]></delimiter>
+	<headers>true</headers>
+	<polymorphic>true</polymorphic>
+  </info>
+  <structure>
+	<field source="ProductName" column="name" required="true" />
+	<field source="ProductSalePrice" column="sale_price" />
+	<field source="ProductListPrice" column="price" required="true" />
+	<field source="ProductQuantityInStock" column="stock_level" />
+	<field source="ProductSKU" column="product_code" required="true" />
+	<field source="ProductLowStockLevel" column="stock_warning" />
+	<field source="ProductDetailedDescription" column="description" />
+	<field source="ProductWeight" column="weight" />
+	<field source="ProductPageTitle" column="seo_meta_title" />
+	<field source="ProductMetaKeywords" column="seo_meta_keywords" />
+	<field source="ProductMetaDescription" column="seo_meta_description" />
+	<!--<field source="ProductSEOPrefix" column="seo_custom_url" />-->
+  </structure>  
+</import>

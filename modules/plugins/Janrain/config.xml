@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<installer version="1.0">
+  <info>
+	<uid>janrain@devellion.com</uid>
+	<type>plugins</type>
+	<folder>Janrain</folder>
+	<name><![CDATA[Janrain (Engage)]]></name>
+	<description><![CDATA[Janrain (Engage) integration]]></description>
+	<version>2.0.0</version>
+	<minVersion>5.0.0a</minVersion>
+	<maxVersion>5.1.*</maxVersion>
+	<creator><![CDATA[Devellion, Ltd]]></creator>
+	<homepage><![CDATA[http://www.cubecart.com]]></homepage>
+  </info>
+  
+  <hooks>
+	<hook trigger="class.cubecart.login" enabled="1"><![CDATA[Login Handler]]></hook>
+	<hook trigger="class.gui.display" enabled="1"><![CDATA[JavaScript Include]]></hook>
+	<hook trigger="class.cubecart.account.list" enabled="1"><![CDATA[Account Menu List]]></hook>
+	<hook trigger="class.cubecart.display_content" enabled="1"><![CDATA[Account Identifier Management]]></hook>
+  </hooks>
+</installer>

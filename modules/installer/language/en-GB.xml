@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<language version="1.0">
+  <info>
+    <title>English</title>
+    <code>en_EN</code>
+    <locale>en_EN</locale>
+    <character_set>utf-8</character_set>
+    <version>1.0.0</version>
+    <minVersion>5.0.0a</minVersion>
+    <maxVersion>5.1.*</maxVersion>
+  </info>
+  <translation>
+	<!-- Common Strings -->
+	<string>
+	  <name>title</name>
+	  <value><![CDATA[Package Installer]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>version</name>
+	  <value><![CDATA[version]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>requires</name>
+	  <value><![CDATA[Requires]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>install_info</name>
+	  <value><![CDATA[To install a CubeCart Package, select the package from your hard drive, and click 'Upload'.]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>upload</name>
+	  <value><![CDATA[Upload]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>cancel</name>
+	  <value><![CDATA[Cancel]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>install</name>
+	  <value><![CDATA[Install]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>upgrade</name>
+	  <value><![CDATA[Upgrade]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>reinstall</name>
+	  <value><![CDATA[Re-install]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>downgrade</name>
+	  <value><![CDATA[Downgrade]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>description</name>
+	  <value><![CDATA[Description]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>incompatible_version</name>
+	  <value><![CDATA['%1$s' is not compatible with this version of CubeCart.]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>install_text</name>
+	  <value><![CDATA[You are about to install '%1$s', version %2$s.]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>upgrade_text</name>
+	  <value><![CDATA[You are about to upgrade '%1$s' from version %3$s to version %2$s]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>downgrade_text</name>
+	  <value><![CDATA[You are about to downgrade '%1$s' from version %3$s to version %2$s.]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>reinstall_text</name>
+	  <value><![CDATA[You already have version %2$s of '%1$s' installed, but you may reinstall it.]]></value>
+	  <type>installer</type>
+	</string>	
+	<string>
+	  <name>install_success</name>
+	  <value><![CDATA['%1$s' successfully installed.]]></value>
+	  <type>installer</type>
+	</string>
+	<string>
+	  <name>install_failed</name>
+	  <value><![CDATA[Install Failed. The following files were not installed.]]></value>
+	  <type>installer</type>
+	</string>
+  </translation>
+</language>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions version="1.0">
+ <group name="janrain">
+  <string name="module_title"><![CDATA[Janrain (Engage)]]></string>
+  <string name="openid_allow"><![CDATA[Allow Janrain Engage Login]]></string>
+  <string name="rpx_what"><![CDATA[What is Janrain Engage?]]></string>
+  <string name="rpx_application"><![CDATA[Janrain Application Domain]]></string>
+  <string name="rpx_application_example"><![CDATA[e.g. myapp.rpxnow.com]]></string>
+  <string name="rpx_api_key"><![CDATA[Janrain API Key]]></string>
+  <string name="your_existing_openids"><![CDATA[Linked Accounts]]></string>
+  <string name="your_openid"><![CDATA[Manage your Linked Accounts]]></string>
+  <string name="error_add_openid"><![CDATA[Failed to link account.]]></string>
+  <string name="error_delete_openid"><![CDATA[Failed to delete link.]]></string>
+  <string name="error_failed_validation"><![CDATA[Failed to validate account. Please check and try again.]]></string>
+  <string name="login_with_openid"><![CDATA[Login with 3rd Party Account]]></string>
+  <string name="notify_add_openid"><![CDATA[Account successfully linked.]]></string>
+  <string name="notify_delete_openid"><![CDATA[Account successfully unlinked.]]></string>
+  <string name="openid"><![CDATA[Linked Accounts]]></string>
+  <string name="openid_url"><![CDATA[Identification URL]]></string>
+  <string name="what_is_openid"><![CDATA[What are linked accounts?]]></string>
+  <string name="add_openid"><![CDATA[Link external account]]></string>
+  <string name="no_openids_exist"><![CDATA[No accounts have been linked.]]></string>
+  <string name="link_account"><![CDATA[Click here to link an account.]]></string>
+  <string name="rpx_register"><![CDATA[Click here to register with an external account]]></string>
+  <string name="rpx_login"><![CDATA[Click here to log in with an external account]]></string>
+ </group>
+</definitions>

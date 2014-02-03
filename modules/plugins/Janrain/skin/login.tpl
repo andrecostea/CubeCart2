@@ -1,0 +1,1 @@
+<div><label>&nbsp;</label><a class="rpxnow" onclick="return false;" href="http://{$RPX_APP_DOMAIN}/openid/embed?token_url={$VAL_SELF|urlencode}">{$LANG_LOGIN}</a></div>

@@ -1,0 +1,1 @@
+jQuery("#productContainer .products:nth-child(4n)").addClass("last");

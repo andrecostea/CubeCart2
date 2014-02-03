@@ -1,0 +1,44 @@
+ul.dropdown ul li {
+    display: inline;
+    width: 100%;
+}
+
+#page_content {
+    padding: 0 5px!important
+}
+
+.sidebar > div > h3 {
+    font-size: 15px
+}
+
+#quick_search span.search > input {
+    font-size: 11px;
+    margin-left: -20px;
+    text-indent: 20px!important;
+    width: 200px;
+}
+
+#menu > li {
+    margin-bottom: -3px
+}
+
+#sale_products ul {
+    list-style: square outside none!important;
+    margin-left: 15px;
+}
+
+#popular_products ol {
+    margin-left: 30px
+}
+
+#product_detail h1 {
+    font-size: 22px
+}
+
+#gallery {
+    width: 340px
+}
+
+#documents ul > li, #subcategories > div.subcategory {
+    display: inline
+}

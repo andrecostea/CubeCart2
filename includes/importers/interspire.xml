@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<import version="1.0">
+  <info>
+	<title><![CDATA[Interspire Shopping Cart]]></title>
+	<delimiter><![CDATA[,]]></delimiter>
+	<headers>true</headers>
+  </info>
+  <structure>
+	<field column="product_id" ignored="true" />
+	<field column="name" required="true" />
+	<field ignored="true" />
+	<field column="product_code" />
+	<field column="description" />
+	<field ignored="true" />
+	<field column="price" required="true" />
+	<field column="stock_level" />
+	<field column="stock_warning" />
+	<field column="weight" />
+	<field ignored="true" />
+	<field ignored="true" />
+	<field ignored="true" />
+	<field ignored="true" />
+	<field ignored="true" />
+	<field ignored="true" />
+	<field column="seo_meta_keywords" />
+	<field column="seo_meta_descripion" />
+	<field ignored="true" />
+	<field ignored="true" />
+  </structure>  
+</import>

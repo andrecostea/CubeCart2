@@ -1,0 +1,46 @@
+#searchForm fieldset {
+    display: block;
+    position: relative;
+    width: 212px;
+}
+
+div.input {
+    background: #FFF;
+    border-radius: 20px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+    float: right;
+    padding: 5px;
+    width: 120px;
+}
+
+div.input.focus {
+    box-shadow: 0 0 6px #e8ca8c, inset 0 1px 2px rgba(0,0,0,0.08)
+}
+
+input#s {
+    background: transparent;
+    border: 0;
+    border-radius: 20px;
+    color: #b4bdc4;
+    height: 16px;
+    width: 100%;
+}
+
+input#s:focus {
+    outline: none
+}
+
+input#searchSubmit {
+    background: url(../images/searchGo.png) no-repeat;
+    border: 0;
+    cursor: pointer;
+    display: none;
+    height: 19px;
+    overflow: hidden;
+    position: absolute;
+    right: 13px;
+    text-indent: -9999px;
+    top: 17px;
+    width: 19px;
+    z-index: 5;
+}

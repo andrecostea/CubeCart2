@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions version="1.0">
+ <group name="payoffline">
+  <string name="module_description"><![CDATA[&#8220;Online shopping just got safer&#8221;]]></string>
+  <string name="module_title"><![CDATA[PayOffline]]></string>
+  <string name="mode_success"><![CDATA[Enabled - Always Successful]]></string>
+  <string name="mode_decline"><![CDATA[Enabled - Always Declined]]></string>
+ </group>
+</definitions>

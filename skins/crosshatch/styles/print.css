@@ -1,0 +1,89 @@
+html, body {
+    border: none;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: .9em;
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    background-color: #000;
+    border: none;
+    color: #000;
+    height: 1px;
+}
+
+#header, #nav, #footer, #breadcrumb, .contentLeft, .contentRight  {
+    display: none
+}
+
+#printLabel {
+    float: right;
+    height: 50mm;
+    padding: 4mm;
+    width: 80mm;
+    z-index: 100;
+}
+
+.sender {
+    border-top: 1px solid #CCC;
+    font-size: .7em;
+    margin-top: 20px;
+    padding-top: 4px;
+}
+
+#storeLabel {
+    height: 50mm;
+    overflow: hidden;
+    padding-top: 4mm;
+    width: 80mm;
+    z-index: -1;
+}
+
+#storeLabel h3 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+div.info {
+    margin: 10px 0 30px
+}
+
+span.orderid {
+    float: right;
+    width: 230px;
+}
+
+div.product {
+    border-bottom: 1px dashed #E7E7E7;
+    clear: both;
+    padding: 5px 0;
+}
+
+span.price {
+    float: right;
+    font-weight: 700;
+}
+
+span.options {
+    font-style: italic
+}
+
+#totals {
+    margin-top: 5px
+}
+
+#totals div.total {
+    text-align: right
+}
+
+#thanks {
+    font-weight: 700;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.page-break {
+    page-break-after: always
+}

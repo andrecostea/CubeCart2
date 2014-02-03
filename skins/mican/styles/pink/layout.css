@@ -1,0 +1,199 @@
+/* !PINK */
+body {
+	background: #FBA7C9 url(../../images/pink/background_main.jpg) repeat-x center top;
+}
+#header #boxes, #header #cart_box, #main_body, #documents {
+	border: 6px solid #E70161;
+	background-color: #FFF;
+}
+#header #boxes h2 {
+	color: #000;	
+}
+#header a {
+	color: #a12a73;
+}
+#quick_search {
+	border-right: 2px solid #DBDCD7;
+	color: #FFF;
+}
+#quick_search input.search {
+	background-image: url(../../images/pink/button_search.png);
+	border: 0px;
+	color: #FFF;
+	font-size: 12px;
+	height: 24px;
+	width: 63px;
+}
+.sidebar > div > h3 {
+	color: #e70262;
+}
+#documents {
+	color: #000;
+}
+#documents a {
+	color: #000;
+	text-decoration: none;
+}
+div.latest_product p.image {
+	border: 1px solid #F2F3EE;
+	border-bottom: none;
+}
+div.latest_product .bottom {
+	border: 1px solid #F2F3EE;
+	border-top: none;
+	background-color: #F2F3EE;
+}
+#documents a:hover {
+	background-color: #A22A72;
+	border: 1px solid #A22A72;
+	color: #FFF;
+}
+a {
+	color: #a12a73;
+}
+h2 {
+	color: #e70262;
+}
+#menu li > a {
+	color: #a12a73;
+}
+#menu > li > a {
+	background-color: #f2f2ee !important;
+}
+#menu > li > a.menu_closed {
+	background-image: url(../../images/pink/menu_top_closed.png);
+}
+#menu > li > a.menu_open {
+	background-image: url(../../images/pink/menu_top_open.png) !important;
+}
+#mailing_list .wrapper {
+	background-color: #ffbe43;
+	color: #FFF;
+	padding: 9px;
+}
+#mailing_list input.submit {
+	background-image: url(../../images/pink/button_subscribe.png);
+}
+#mailing_list input.submit {
+	background-color: transparent;
+	border: none;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	width: 111px;
+}
+#popular_products .wrapper {
+	background: #F2F3EE url(../../images/pink/background_popular_products.png) repeat-y left;
+}
+#popular_products ol > li {
+	border-bottom: 1px dotted #a9a9a7;
+	color: #636363;
+}
+#sale_products .wrapper {
+	background-color: #fceaf4;
+	padding-bottom: 9px;	
+}
+#sale_products ul {
+	list-style: none outside url(../../images/pink/bullet.png) !important;
+}
+#sale_products .button_default_large {
+	margin-left: 9px;
+}
+#featured_product .wrapper_top {
+	border-top: 1px solid #F2F3EE;
+	border-left: 1px solid #F2F3EE;
+	border-right: 1px solid #F2F3EE;
+}
+#featured_product .wrapper_bottom {
+	background-color: #F2F3EE;
+	border-bottom: 1px solid #F2F3EE;
+	border-left: 1px solid #F2F3EE;
+	border-right: 1px solid #F2F3EE;
+}
+#featured_product p.title {
+	background-color: #DBDBD9;
+}
+#featured_product .bottom {
+	background-color: #F2F3EE;
+}
+#session p span {
+	color: #ed1c24;
+}
+#basket_summary p.view_basket {}
+#basket_summary p.view_basket a {
+	color: #FFF;
+	text-decoration: none;
+}
+#basket_summary p.basket_total {
+	color: #a12a73;
+	border-top: dotted #636363 1px;
+	border-bottom: dotted #636363 1px;
+}
+.button_default {
+	background-image: url(../../images/pink/button_default.png);
+	color: #FFF;
+	text-decoration: none;
+}
+.button_default_large {
+	background-image: url(../../images/pink/button_default_large.png);
+	color: #FFF;
+	text-decoration: none;
+}
+h1 {
+	color: #000;
+}
+#addForm {
+	background-color: #F2F2EE;
+}
+.control {
+	background-color: #DBDBD8;
+	color: #4F4F4E;
+}
+div.category_product {
+	border-bottom: 1px dotted #C4C8C8;
+}
+div.category_product div.details p.price {
+	border-bottom: 1px solid #C4C8C8;
+}
+#product_detail {}
+#product_detail > .options {
+	border-top: 1px solid #C4C8C8;
+}
+#review_write, #product_share {
+}
+.basket_header, .total {
+	background-color: #DBDBD8;
+	color: #4F4F4E;
+}
+a.button_submit {
+	vertical-align: top;
+}
+.button_submit.right, input[type="submit"].right, input[type="reset"].right {
+	float: right;
+	margin-left: 5px;
+}
+.checkout-progress {
+	background-color: #FFBE43;
+	color: #636363 !important;
+}
+
+.checkout-progress > span.current {
+	color: #FFF !important;
+}
+.checkout-progress > span.next {}
+.checkout-progress > span.last {}
+
+.hover_zoom {
+	background-color: #DAEBF3;
+	color: #4F4F4F;
+}
+.list-odd {
+	background-color: #F2F2EE;
+}
+.list-even {
+	background-color: #F9F9F4;
+}
+.list-hover {
+	background-color: #F2F2EE !important;
+}

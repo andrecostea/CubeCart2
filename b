@@ -1,0 +1,35 @@
+total 196
+drwxrwxrwx 19 student student  4096 2014-02-03 22:14 .
+drwxr-xr-x  5 student student  4096 2014-02-03 21:45 ..
+drwxrwxrwx  5 student student  4096 2013-12-05 14:18 admin
+-rwxrwxrwx  1 student student 30527 2013-04-02 16:50 admin_enc_ion.php
+-rwxrwxrwx  1 student student  1536 2013-01-16 01:30 admin.php
+-rwxrwxrwx  1 student student 16611 2013-04-02 16:50 admin_php5.2_enc_zend.php
+-rwxrwxrwx  1 student student 18015 2013-04-02 16:50 admin_php5.3_enc_zend.php
+-rw-r--r--  1 student student     0 2014-02-03 22:16 b
+drwxrwxrwx  2 student student  4096 2013-04-24 15:32 backup
+drwxrwxrwx  3 student student  4096 2014-02-03 20:57 cache
+drwxrwxrwx  5 student student  4096 2013-04-24 15:32 classes
+drwxrwxrwx  2 student student  4096 2013-04-24 15:32 controllers
+drwxrwxrwx  3 student student  4096 2013-04-24 15:32 docs
+-rwxrwxrwx  1 student student  1085 2010-06-21 16:24 favicon.ico
+drwxrwxrwx  2 student student  4096 2013-04-24 15:32 files
+drwxr-xr-x  3 student student  4096 2014-02-03 22:03 fluturas
+drwxrwxrwx  8 student student  4096 2013-04-24 15:32 images
+drwxrwxrwx  6 student student  4096 2013-12-05 14:13 includes
+-rwxrwxrwx  1 student student  3321 2013-04-02 16:50 index_enc_ion.php
+-rwxrwxrwx  1 student student   947 2012-12-07 16:33 index.php
+-rwxrwxrwx  1 student student  3345 2013-04-02 16:50 index_php5.2_enc_zend.php
+-rwxrwxrwx  1 student student  2890 2013-04-02 16:50 index_php5.3_enc_zend.php
+-rwxrwxrwx  1 student student  7596 2013-04-23 22:21 ini.inc.php
+drwxrwxrwx  2 student student  4096 2013-12-05 14:19 ioncube
+drwxrwxrwx  4 student student  4096 2013-04-24 15:32 js
+drwxrwxrwx  3 student student  4096 2013-04-24 15:32 language
+drwxrwxrwx  2 student student  4096 2013-04-24 15:32 logs
+drwxrwxrwx 10 student student  4096 2013-04-24 15:32 modules
+-rwxrwxrwx  1 student student    21 2013-12-05 14:07 phpinfo.php
+-rwxrwxrwx  1 student student    75 2013-12-05 14:54 php.ini
+-rwxrwxrwx  1 student student   707 2013-03-28 20:40 READ ME.txt
+-rwxrwxrwx  1 student student    81 2010-07-17 03:39 robots.txt
+drwxrwxrwx  8 student student  4096 2013-04-24 15:32 setup
+drwxrwxrwx  9 student student  4096 2013-04-24 15:32 skins

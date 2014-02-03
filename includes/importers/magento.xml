@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<import version="1.0">
+  <info>
+	<title><![CDATA[Magento]]></title>
+	<delimiter><![CDATA[,]]></delimiter>
+	<headers>true</headers>
+	<polymorphic>true</polymorphic>
+  </info>
+  <structure>
+	<field source="status" column="status" ignored="true" />
+	<field source="name" column="name" required="true" />
+	<field source="sku" column="product_code" required="true" />
+	<field source="weight" column="weight" />
+	<field source="price" column="price" required="true" />
+	<field source="description" column="description" />
+	<field source="qty" column="stock_level" />
+	<field source="notify_stock_qty" column="stock_warning" />
+	<field source="use_config_manage_stock" column="use_stock_level" />
+	<field source="url_key" column="seo_custom_url" />
+	<field source="meta_title" column="seo_meta_title" />
+	<field source="meta_keyword" column="seo_meta_keywords" />
+	<field source="meta_description" column="seo_meta_description" />
+  </structure>  
+</import>

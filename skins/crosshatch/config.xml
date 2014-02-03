@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<skin version="3.1">
+  <info>
+	<!--
+	UIDs can be generated on the unix/linux command line using `uuid -v4`, or you can use any string, as long as you think it wont accidentally be picked by anyone else
+	A good example of the latter would be something like 'skin-blank@example.com'. While not necessarily an active email address, it's a pretty good approximation of a unique key
+	--> 
+	<uid>crosshatch@toucanwebdesign.com</uid>
+	<type>skin</type>
+	<name><![CDATA[crosshatch]]></name>
+	<display><![CDATA[Crosshatch]]></display>
+	<version>1.0</version>
+	<minVersion>5.0.0a</minVersion>
+	<maxVersion>5.1.*</maxVersion>
+	<creator>Toucan Web Design</creator>
+	<homepage>http://www.toucanwebdesign.com/</homepage>
+	<mobile>false</mobile>
+  </info>
+  
+  <images>
+	<!-- Common -->
+	<image reference="thumbnail" maximum="116" quality="75" default="noimage_thumbnail.png" />
+	<!-- Category Page -->
+	<image reference="category" maximum="580" quality="100" default="" /><!-- Doesnt need a default -->
+	<image reference="subcategory" maximum="108" quality="70" default="noimage_subcategory.png" />
+	
+	<!-- Product Page -->
+	<image reference="gallery" maximum="45" quality="60" default="noimage_gallery.png" />
+	<image reference="normal" maximum="270" quality="90" default="noimage_normal.png" />
+	<image reference="enlarge" maximum="600" quality="90" default="" /><!-- Doesnt need a default -->
+	
+	<!-- Possible names (sizes): thumbnail (138), product(300-ish), enlarged (big), zoom (bigger, poss. source?) -->
+	
+	<!-- These are the ones currently in use -->
+	<image reference="tiny" maximum="30" quality="75" default="noimage_thumbnail_tiny.png" />
+	<image reference="small" maximum="116" quality="75" default="noimage_thumbnail.png" />
+	<image reference="medium" maximum="270" quality="80" default="noimage_normal.png" />
+	<image reference="large" maximum="600" quality="80" default="" /><!-- Doesnt need a default -->
+  </images>
+  
+</skin>
