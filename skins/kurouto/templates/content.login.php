@@ -1,5 +1,5 @@
 <form action="{$VAL_SELF}" method="post">
-  <h2>{$LANG.account.login}</h2>
+  <h2>Login with CubeCart account</h2>
   <div class="login-method">
 	
 	<fieldset>
