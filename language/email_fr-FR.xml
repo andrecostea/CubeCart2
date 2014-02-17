@@ -158,7 +158,26 @@ Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien ci-dessous 
  
 {$DATA.reset_link}
  
-Si vous avez besoin davantage d'assistance pour la réinitialisation de votre mot de passe, veuillez nous contacter.]]></content></email> <email name="admin.order_received"><subject><![CDATA[Nouvelle commande #{$DATA.cart_order_id}]]></subject> <content type="html"><![CDATA[<p>{$DATA.first_name} {$DATA.last_name} {if !empty({$BILLING.company_name})}({$BILLING.company_name}){/if} vient juste d'être passée, numéro de commande {$DATA.cart_order_id} on {$DATA.order_date}.</p>
+Si vous avez besoin davantage d'assistance pour la réinitialisation de votre mot de passe, veuillez nous contacter.]]></content></email> 
+ <email name="account.password_updated">
+    <subject>
+      <![CDATA[Password Updated]]>
+    </subject>
+    <content type="html">
+      <![CDATA[<p>Dear {$DATA.first_name} {$DATA.last_name},<br /> 
+        <br /> 
+	This is to confirm that your password was recently changed. If you did not do this change, please contact us immediately.
+        If you require further assistance in resetting your password, please contact us.</p>]]>
+    </content>
+    <content type="text">
+      <![CDATA[Hi {$DATA.first_name},
+       
+       This is to confirm that your password was recently changed. If you did not do this change, please contact us immediately.
+        
+       If you require further assistance in resetting your password, please contact us.]]>
+    </content>
+  </email>
+<email name="admin.order_received"><subject><![CDATA[Nouvelle commande #{$DATA.cart_order_id}]]></subject> <content type="html"><![CDATA[<p>{$DATA.first_name} {$DATA.last_name} {if !empty({$BILLING.company_name})}({$BILLING.company_name}){/if} vient juste d'être passée, numéro de commande {$DATA.cart_order_id} on {$DATA.order_date}.</p>
 <p>Cette commande peut être gérée en ligne en suivant le lien suivant.</p> 
 <p><a href="{$DATA.link}">{$DATA.link}</a></p>
 <table width="100%">

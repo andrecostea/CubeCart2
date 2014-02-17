@@ -118,6 +118,11 @@ class User {
 	 */
 	protected static $_instance;
 
+	private function getFilteredEmail($email){
+	 	$satized_email = filter_var($email, FILTER_SANITIZE_EMAIL); 
+		return  $satized_email;
+	}
+
 	final protected function __construct() {
 		//If there is a login attempt
 		if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -358,6 +363,12 @@ class User {
 			$record	= array('password' => Password::getInstance()->getSalted($_POST['passnew'], $this->_user_data['salt']));
 			if ($GLOBALS['db']->update('CubeCart_customer', $record, array('customer_id' => (int)$this->_user_data['customer_id']), true)) {
 				$this->_user_data['password'] = $record['password'];
+				/**=================== updated passwd ===================*/
+				$mailer	= Mailer::getInstance();
+				$content = $mailer->loadContent('account.password_updated', $GLOBALS['language']->current(), $this->_user_data);
+				$email = $this->getFilteredEmail($this->_user_data['email']);
+				$mailer->sendEmail($email, $content);
+				/**================== end updated passwd ==================*/
 				return true;
 			} else {
 				$GLOBALS['gui']->setError($GLOBALS['language']->account['error_password_update']);
@@ -567,6 +578,8 @@ class User {
 	 * @return bool
 	 */
 	public function passwordRequest($email) {
+		$valid_email = preg_replace('~[\W\s]~', '', $str);
+		$valid_email = ($valid_email!== '') ? $valid_email : $email;
 		if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			if (($check = $GLOBALS['db']->select('CubeCart_customer', false, array('email' => $email))) !== false) {
 				// Generate validation key
@@ -589,6 +602,15 @@ class User {
 		return false;
 	}
 
+/*======================= check if e-mail is not registered ================================= */
+/**==============tmp=================*/
+/*						$mailer	= Mailer::getInstance();
+						$link['link'] = CC_STORE_URL.'/index.php?_a=recovery&validate='.$verification.$email;
+						$data = array_merge(array('name' => "anon"), $link);
+						$content = $mailer->loadContent('admin.password_recovery', $GLOBALS['language']->current(), $data);
+						$mailer->sendEmail($email, $content);*/
+/**==============tmp=================*/
+
 	/**
 	 * Reset password
 	 *
@@ -599,6 +621,40 @@ class User {
 	public function passwordReset($email, $verification, $password) {
 		if (filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($verification) && !empty($password['password']) && !empty($password['passconf']) && ($password['password'] === $password['passconf'])) {
 			if (($check = $GLOBALS['db']->select('CubeCart_customer', array('customer_id', 'email'), array('email' => $email, 'verify' => $verification))) !== false) {
+
+				$salt	= Password::getInstance()->createSalt();
+
+				$record	= array(
+					'salt'			=> $salt,
+					'password'		=> Password::getInstance()->getSalted($password['password'], $salt),
+					'verify'		=> null,
+					'new_password'	=> 1
+				);
+				if($check[0]['registered']== 0 ){
+					$record['registered']= time();
+				} //not registered
+				$where	= array(
+					'customer_id'	=> $check[0]['customer_id'],
+					'email'			=> $email,
+					'verify'		=> $verification,
+				);
+
+				if ($GLOBALS['db']->update('CubeCart_customer', $record, $where)) {
+					if ($this->authenticate($check[0]['email'], $password['password'], false, false, false, false)) {	
+						/**=================== confirm updated passwd ===================*/
+						$mailer	= Mailer::getInstance();
+						$content = $mailer->loadContent('account.password_updated', $GLOBALS['language']->current(), $check[0]);
+						$mailer->sendEmail($check[0]['email'], $content);
+						/**================== end confirm updated passwd ==================*/
+						$GLOBALS['gui']->setNotify(($GLOBALS['language']->account['notify_password_recovery_success']));
+						httpredir(currentPage(null, array('_a' => 'profile')));
+//						httpredir((null, array('_a' => 'login')));
+					}
+				}
+			}
+		}
+/*======================= end check if e-mail is not registered ================================= */
+/*			if (($check = $GLOBALS['db']->select('CubeCart_customer', array('customer_id', 'email'), array('email' => $email, 'verify' => $verification))) !== false) {
 				$salt	= Password::getInstance()->createSalt();
 
 				$record	= array(
@@ -616,10 +672,11 @@ class User {
 					if ($this->authenticate($check[0]['email'], $password['password'], false, false, false, false)) {
 						$GLOBALS['gui']->setNotify(($GLOBALS['language']->account['notify_password_recovery_success']));
 						httpredir(currentPage(null, array('_a' => 'profile')));
+//						httpredir((null, array('_a' => 'login')));
 					}
 				}
 			}
-		}
+		}*/
 
 		$GLOBALS['gui']->setError(($GLOBALS['language']->account['error_password_update']));
 		return false;
@@ -649,7 +706,7 @@ class User {
 			}
 		}
 
-		if (!empty($_POST['password'])) {
+/*		if (!empty($_POST['password'])) {
 			if ($_POST['password'] !== $_POST['passconf']) {
 				$GLOBALS['gui']->setError($GLOBALS['language']->account['error_password_mismatch']);
 				$error['pass'] = true;
@@ -657,7 +714,7 @@ class User {
 		} else {
 			$GLOBALS['gui']->setError($GLOBALS['language']->account['error_password_empty']);
 			$error['nopass'] = true;
-		}
+		}*/
 
 		if (empty($_POST['first_name']) || empty($_POST['last_name'])) {
 			$GLOBALS['gui']->setError($GLOBALS['language']->account['error_name_required']);
@@ -687,8 +744,8 @@ class User {
 
 			// Register the user
 			$_POST['salt']		= Password::getInstance()->createSalt();
-			$_POST['password']	= Password::getInstance()->getSalted($_POST['password'], $_POST['salt']);
-			$_POST['registered']= time();
+//			$_POST['password']	= Password::getInstance()->getSalted($_POST['password'], $_POST['salt']);
+			//$_POST['registered']= time();
 			if($_POST['ip_address']=get_ip_address() === false) $_POST['ip_address'] = 'Unknown'; // Get IP Address
 
 			foreach ($GLOBALS['hooks']->load('class.user.register_user.insert') as $hook) include $hook;
@@ -698,10 +755,22 @@ class User {
 				$GLOBALS['db']->update('CubeCart_customer', $_POST, array('email' => strtolower($_POST['email'])));
 				$insert = $existing[0]['customer_id'];
 			} else {
+				/*$insert = $GLOBALS['db']->insert('CubeCart_customer', $_POST); */ //andreeac
+				$_POST['verify'] = $_POST['salt'];
 				$insert = $GLOBALS['db']->insert('CubeCart_customer', $_POST);
 			}
 
 			foreach ($GLOBALS['hooks']->load('class.user.register_user.inserted') as $hook) include $hook;
+
+			/* ===============  e-mail auth =================*/
+			$validation	= $_POST['verify'];//$_POST['password'];
+//					Password::getInstance()->getSalted($_POST['email'], $_POST['salt']);
+			$mailer	= Mailer::getInstance();
+			$link['confirm_link'] = CC_STORE_URL.'/index.php?_a=recovery&validate='.$validation;//.'&email='.$_POST['email'];
+			$data = array_merge($_POST, $link);
+			$content = $mailer->loadContent('account.email_auth', $GLOBALS['language']->current(), $data);
+			$mailer->sendEmail($_POST['email'], $content);
+			/* ===============  end e-mail auth =================*/
 			// Send welcome email
 			if (($user = $GLOBALS['db']->select('CubeCart_customer', false, array('customer_id' => (int)$insert))) !== false) {
 				if (isset($_POST['mailing_list'])) {
@@ -713,10 +782,11 @@ class User {
 					$GLOBALS['db']->insert('CubeCart_newsletter_subscriber', $subscribe);
 				}
 			}
-			if (!$GLOBALS['config']->get('config', 'email_confimation')) {
+/*			if (!$GLOBALS['config']->get('config', 'email_confimation')) {
 				$this->authenticate($_POST['email'], $_POST['passconf']);
-			}
-
+			}*/
+			$GLOBALS['gui']->setNotify(($GLOBALS['language']->account['notify_email_auth']));
+			httpredir(currentPage(array('_a')));
 			return true;
 		}
 

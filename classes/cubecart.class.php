@@ -69,6 +69,17 @@ class Cubecart {
         return self::$_instance;
 	}
 
+	private function getFilteredEmail($email){
+	 	$satized_email = filter_var($email, FILTER_SANITIZE_EMAIL); 
+		return  $satized_email;
+	}
+
+	private function getAlphaNum($str){
+		$an = preg_replace('~[\W\s]~', '', $str);
+		if ($an !== '') return $an;
+		else $str;
+	}
+
 	/**
 	 * Show the home page
 	 */
@@ -2367,7 +2378,6 @@ class Cubecart {
 		$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['recover_password'], currentPage());
 		
 		$GLOBALS['smarty']->assign('SECTION_NAME', 'recover');
-		
 		if (isset($_POST['email'])) {
 			// Send a recovery email
 			if ($GLOBALS['user']->passwordRequest($_POST['email'])) {
@@ -2392,20 +2402,26 @@ class Cubecart {
 		$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['recover_password'], currentPage());
 		
 		$GLOBALS['smarty']->assign('SECTION_NAME', 'recovery');
-		
-		if (isset($_POST['email']) && isset($_POST['validate']) && isset($_POST['password'])) {
-			if ($GLOBALS['user']->passwordReset($_POST['email'], $_POST['validate'], $_POST['password'])) {
+/*andreeac**/
+		$email_post = $this->getFilteredEmail($_POST['email']);
+		$validate_post = $this->getAlphaNum($_POST['validate']);
+		if (isset($email_post) && isset($validate_post) && isset($_POST['password'])) {
+			//$validate = preg_replace ('/[^a-z0-9]/i', '', $_POST['validate']);
+			if ($GLOBALS['user']->passwordReset($email_post,$validate_post, $_POST['password'])) {
 				$GLOBALS['gui']->setNotify($GLOBALS['language']->account['notify_password_recovery_success']);
 				httpredir('?_a=account');
 			} else {
 				$GLOBALS['gui']->setError($GLOBALS['language']->account['error_password_recover']);
 			}
 		}
-		$email		= (isset($_GET['email'])) ? $_GET['email'] : null;
-		$validate	= (isset($_GET['validate'])) ? $_GET['validate'] : null;
+		$email_get = $this->getFilteredEmail($_GET['email']);
+		$email		= (isset($email_get)) ? $email_get : null;
+		$validate_get   = $this->getAlphaNum($_GET['validate']);
+		$validate_get	= (isset($validate_get)) ? ($validate_get) : null;
 		$GLOBALS['smarty']->assign('DATA', array(
-			'email'		=> (isset($_POST['email'])) ? $_POST['email'] : $email,
-			'validate'	=> (isset($_POST['validate'])) ? $_POST['validate'] : $validate,
+			'email'		=> (isset($email_post)) ? $email_post : $email,
+//			'validate'	=> (isset($_POST['validate'])) ?$_POST['validate'] : $_GET['validate'],
+			'validate'	=> (isset($validate_post)) ? $validate_post : $validate_get,
 		));
 		$content = $GLOBALS['smarty']->fetch('templates/content.recovery.php');
 		$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
