@@ -21,6 +21,7 @@
  * @version 1.1.0
  * @since 5.0.0
  */
+require 'openid.php';
 class Cubecart {
 	/**
 	 * Holds the current basket
@@ -315,7 +316,15 @@ class Cubecart {
 						$GLOBALS['smarty']->assign('SECTION_NAME', 'login');
 						$this->_login();
 					}
-				break;
+                    break;
+                case 'sso':
+                    if($GLOBALS['user']->is()){
+                        httpredir('index.php');
+                    } else {
+                        $GLOBALS['smarty']->assign('SECTION_NAME', 'login');
+                        $this->_sso_login();
+                    }
+                    break;
 
 
 				case 'newsletter':
@@ -1859,14 +1868,57 @@ class Cubecart {
 		} elseif(!isset($redir)) {
 			$redir = 'index.php?_a=account';
 		}
-		$GLOBALS['smarty']->assign('REDIRECT_TO',$redir);
+        $GLOBALS['smarty']->assign('REDIRECT_TO',$redir);
 
-        $content_login = $GLOBALS['smarty']->fetch('templates/content.login.php');
-        $content_sso = $GLOBALS['smarty']->fetch('templates/content.sso.php');
-        $content = $content_login.$content_sso;
+        $openid = new LightOpenID("localhost");
+        $openid->identity = 'https://www.google.com/accounts/o8/id';
+        $openid->required = array(
+            'namePerson/first',
+            'namePerson/last',
+            'contact/email',
+        );
+        $openid->returnUrl = 'http://localhost/CubeCart2/index.php?_a=sso';
+        $GLOBALS['smarty']->assign('GOOGLELOGINPAGE', $openid->authUrl());
+
+        $content = $GLOBALS['smarty']->fetch('templates/content.login.php');
 		$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
 	}
+	private function _sso_login() {
+		/* !sso Login */
+		$GLOBALS['session']->setBack();
+		$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['login'], $GLOBALS['seo']->buildURL('login'));
+		$GLOBALS['smarty']->assign('REMEMBER', false);
 
+		/* !Login Routines */
+        $login_html = array();
+        foreach ($GLOBALS['hooks']->load('class.cubecart.login') as $hook) include $hook;
+		$GLOBALS['smarty']->assign('LOGIN_HTML', $login_html);
+		
+		if(!isset($redir) && is_array($GLOBALS['cart']->basket['contents'])) {
+			$redir = 'index.php?_a=basket';
+		} elseif(!isset($redir)) {
+			$redir = 'index.php?_a=account';
+		}
+        $GLOBALS['smarty']->assign('REDIRECT_TO',$redir);
+
+        $openid = new LightOpenID("localhost");
+        if($openid->mode){
+            if($openid->mode == 'cancel'){
+                echo "User has canceled atuthentications!";
+            } elseif($openid->validate()){
+                $google_information = $openid->getAttributes();
+                $google_email = $google_information['contact/email'];
+                $google_first = $google_information['namePerson/first'];
+                $GLOBALS['smarty']->assign('GOOGLEEMAIL', $google_email);
+                $content = $GLOBALS['smarty']->fetch('templates/content.sso.php');
+                $GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
+            } else {
+                echo "The user has not logged in to google.";
+            }
+        } else {
+            echo "Please log in.";
+        }
+	}
 	/**
 	 * Logout
 	 */
