@@ -1,6 +1,7 @@
 <form action="{$VAL_SELF}" method="post">
   <h2>{$LANG.account.login}</h2>
   <div class="login-method">
+	
 	<fieldset>
 	  {foreach from=$LOGIN_HTML item=html}
 	    {$html}
@@ -14,5 +15,8 @@
   <div>
 	<input type="hidden" name="redir" value="{$REDIRECT_TO}" />
 	<input name="submit" type="submit" value="{$LANG.account.log_in}" class="button_submit" />
+  </div>
+  <div>
+  <a href="{$GOOGLELOGINPAGE}"><br/>Have not registered? Login with Google!</a>
   </div>
   </form>

@@ -21,6 +21,7 @@
  * @version 1.1.0
  * @since 5.0.0
  */
+require 'openid.php';
 class Cubecart {
 	/**
 	 * Holds the current basket
@@ -1848,7 +1849,17 @@ class Cubecart {
 		} elseif(!isset($redir)) {
 			$redir = 'index.php?_a=account';
 		}
-		$GLOBALS['smarty']->assign('REDIRECT_TO',$redir);
+        $GLOBALS['smarty']->assign('REDIRECT_TO',$redir);
+
+        $openid = new LightOpenID("localhost");
+        $openid->identity = 'https://www.google.com/accounts/o8/id';
+        $openid->required = array(
+            'namePerson/first',
+            'namePerson/last',
+            'contact/email',
+        );
+        $openid->returnUrl = 'http://localhost/CubeCart/includes/sso.test.php';
+        $GLOBALS['smarty']->assign('GOOGLELOGINPAGE', $openid->authUrl());
 
         $content = $GLOBALS['smarty']->fetch('templates/content.login.php');
 		$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
