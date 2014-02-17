@@ -1898,9 +1898,13 @@ class Cubecart {
                 $google_information = $openid->getAttributes();
                 $google_email = $google_information['contact/email'];
                 $google_first = $google_information['namePerson/first'];
-                $GLOBALS['smarty']->assign('GOOGLEEMAIL', $google_email);
-                $content = $GLOBALS['smarty']->fetch('templates/content.sso.php');
-                $GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
+                if(!($GLOBALS['db']->select('CubeCart_customer', 'customer_id', array('email' => $google_email)))){
+                    $google_data = array('email'=>$google_email, 'first_name'=>$google_first, 'language'=>'en-US', 'country'=>0, 'status'=>1, 'order_count'=>0, 'verify'=>NULL);
+                    $google_data['password'] = "cubecart123";
+                    $GLOBALS['user']->createUser($google_data, true, 1);
+                }else{
+                    $GLOBALS['user']->authenticate($google_email, "cubecart123");
+                }
             } else {
                 echo "The user has not logged in to google.";
             }
