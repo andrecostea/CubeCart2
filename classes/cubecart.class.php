@@ -1909,8 +1909,10 @@ class Cubecart {
                 $google_information = $openid->getAttributes();
                 $google_email = $google_information['contact/email'];
                 $google_first = $google_information['namePerson/first'];
+                $google_last  = $google_information['namePerson/last'];
+                $google_phone = '88888888';
                 if(!($GLOBALS['db']->select('CubeCart_customer', 'customer_id', array('email' => $google_email)))){
-                    $google_data = array('email'=>$google_email, 'first_name'=>$google_first, 'language'=>'en-US', 'country'=>0, 'status'=>1, 'order_count'=>0, 'verify'=>NULL);
+                    $google_data = array('email'=>$google_email, 'first_name'=>$google_first, 'last_name'=>$google_last, 'phone'=>$google_phone, 'language'=>'en-US', 'country'=>0, 'status'=>1, 'order_count'=>0, 'verify'=>NULL);
                     $google_data['password'] = "cubecart123";
                     $GLOBALS['user']->createUser($google_data, true, 1);
                 }else{
