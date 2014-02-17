@@ -1850,9 +1850,7 @@ class Cubecart {
 		}
 		$GLOBALS['smarty']->assign('REDIRECT_TO',$redir);
 
-        $content_login = $GLOBALS['smarty']->fetch('templates/content.login.php');
-        $content_sso = $GLOBALS['smarty']->fetch('templates/content.sso.php');
-        $content = $content_login.$content_sso;
+        $content = $GLOBALS['smarty']->fetch('templates/content.login.php');
 		$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
 	}
 
