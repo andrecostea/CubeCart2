@@ -57,6 +57,7 @@
       <string name="new_password" introduced="5.0.0"><![CDATA[Nueva contraseña]]></string>
       <string name="new_password_confirm" introduced="5.0.0"><![CDATA[Confirmar nueva contraseña]]></string>
       <string name="no_orders_made" introduced="5.0.0"><![CDATA[No se ha realizado ningún pedido.]]></string>
+      <string name="notify_email_auth" introduced="5.0.0"><![CDATA[A confirmation request has been sent to your e-mail adress.]]></string>
       <string name="notify_address_added" introduced="5.0.0"><![CDATA[La dirección ha sido guardada.]]></string>
       <string name="notify_address_delete" introduced="5.0.0"><![CDATA[La dirección ha sido borrada.]]></string>
       <string name="notify_address_updated" introduced="5.0.0"><![CDATA[La dirección ha sido actualizada.]]></string>

@@ -11,10 +11,10 @@
 	<div><label for="register-email">{$LANG.common.email}</label><span><input type="text" name="email" id="register-email" value="{$DATA.email}" class="required" /> *</span></div>
 	<div><label for="register-phone">{$LANG.address.phone}</label><span><input type="text" name="phone" id="register-phone" class="textbox required" value="{$DATA.phone}" /> *</span></div>
 	<div><label for="register-mobile">{$LANG.address.mobile}</label><span><input type="text" name="mobile" id="register-mobile" class="textbox" value="{$DATA.mobile}" /></span></div>
-
+<!--
 	<div><label for="register-password">{$LANG.account.password}</label><span><input type="password" autocomplete="off" name="password" id="register-password" value="" class="required" /> *</span></div>
 	<div><label for="register-passconf">{$LANG.account.password_confirm}</label><span><input type="password" autocomplete="off" name="passconf" id="register-passconf" value="" class="required" /> *</span></div>
-
+-->
 	{include file='templates/content.recaptcha.php'}
 
 	{if $TERMS_CONDITIONS}

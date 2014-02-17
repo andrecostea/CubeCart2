@@ -222,6 +222,24 @@
         If you require further assistance in resetting your password, please contact us.]]>
     </content>
   </email>
+ <email name="account.password_updated">
+    <subject>
+      <![CDATA[Password Updated]]>
+    </subject>
+    <content type="html">
+      <![CDATA[<p>Dear {$DATA.first_name} {$DATA.last_name},<br /> 
+        <br /> 
+	This is to confirm that your password was recently changed. If you did not do this change, please contact us immediately.
+        If you require further assistance in resetting your password, please contact us.</p>]]>
+    </content>
+    <content type="text">
+      <![CDATA[Hi {$DATA.first_name},
+       
+       This is to confirm that your password was recently changed. If you did not do this change, please contact us immediately.
+        
+       If you require further assistance in resetting your password, please contact us.]]>
+    </content>
+  </email>
   <email name="admin.order_received">
     <subject>
       <![CDATA[New Order #{$DATA.cart_order_id}]]>

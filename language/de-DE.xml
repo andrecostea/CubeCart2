@@ -62,6 +62,7 @@
       <string name="notify_address_updated" introduced="5.0.0"><![CDATA[Adresse wurde aktualisiert.]]></string>
       <string name="notify_details_updated" introduced="5.0.0"><![CDATA[Ihre Informationen wurden aktualisiert.]]></string>
       <string name="notify_logged_out" introduced="5.0.0"><![CDATA[Sie wurden erfolgreich ausgeloggt.]]></string>
+      <string name="notify_email_auth" introduced="5.0.0"><![CDATA[A confirmation request has been sent to your e-mail adress.]]></string>
       <string name="notify_password_recovery" introduced="5.0.0"><![CDATA[Die E-Mail zur Passwortwiederherstellung wurde gesendet.]]></string>
       <string name="notify_password_recovery_success" introduced="5.0.0"><![CDATA[Danke. Ihr Passwort wurde aktualisiert.]]></string>
       <string name="password" introduced="5.0.0"><![CDATA[Passwort]]></string>
