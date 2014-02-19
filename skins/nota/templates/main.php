@@ -40,7 +40,7 @@
 <body>
   <div id="page_wrapper" class="{$SECTION_NAME}_wrapper">
 	<div id="account">
-	  {$SESSION} {$CURRENCY} {$LANGUAGE}
+	  {$SESSION} {$CURRENCY} {$LANGUAGE} {$LIVE_CHAT_ROOM}
 	</div>
 
 

@@ -43,7 +43,7 @@
 		<a href="{$STORE_URL}" class="headerLogo"><img src="{$STORE_LOGO}" alt="{$META_TITLE}"/></a>
 		{$SEARCH_FORM} {$SITE_DOCS}
 		<div class="headerSelects">
-			 {if isset($SKIN_SELECT)}{$SKIN_SELECT}{/if} {$LANGUAGE} {$CURRENCY}
+			 {if isset($SKIN_SELECT)}{$SKIN_SELECT}{/if} {$LANGUAGE} {$CURRENCY} {$LIVE_CHAT_ROOM}
 			<div class="clear">
 				&nbsp;
 			</div>

@@ -42,7 +42,7 @@
 	  <span class="sep">{$SESSION}</span>
 	  <span class="sep">{$SEARCH_FORM}</span>
 	  <span class="sep">{$CURRENCY}</span>
-	  {$LANGUAGE}
+	  {$LANGUAGE} {$LIVE_CHAT_ROOM}
 	</div>
 	<div id="header">
 	  {$SHOPPING_CART}

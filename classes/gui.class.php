@@ -1090,7 +1090,8 @@ class GUI {
 	private function _displaySearchBox() {
 		foreach ($GLOBALS['hooks']->load('class.gui.display_search_box') as $hook) include $hook;
 		$GLOBALS['smarty']->assign('SEARCH_URL', $GLOBALS['seo']->buildURL('search'));
-		$GLOBALS['smarty']->assign('SEARCH_FORM', $GLOBALS['smarty']->fetch('templates/box.search.php'));
+        $GLOBALS['smarty']->assign('SEARCH_FORM', $GLOBALS['smarty']->fetch('templates/box.search.php'));
+        $GLOBALS['smarty']->assign('LIVE_CHAT_ROOM', $GLOBALS['smarty']->fetch('templates/box.chatroom.php'));
 	}
 
 	/**

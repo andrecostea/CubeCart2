@@ -42,7 +42,7 @@
     <p class="logo"><a href="{$STORE_URL}"><img src="{$STORE_LOGO}" alt="{$META_TITLE}" /></a></p>
 	<div id="header">
 		<div id="boxes">
-	   		{$SEARCH_FORM} {$LANGUAGE} {$CURRENCY}
+	   		{$SEARCH_FORM} {$LANGUAGE} {$CURRENCY} {$LIVE_CHAT_ROOM}
 		</div>
 	  	<div id="cart_box">
 	  		{$SESSION}

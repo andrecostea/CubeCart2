@@ -55,7 +55,8 @@
 		{$RANDOM_PROD}
 		<div id="language_currency">
 		  {$LANGUAGE}
-		  {$CURRENCY}
+          {$CURRENCY}
+          {$LIVE_CHAT_ROOM}
 		</div>
 		{$MAIL_LIST}
 	  </div>
