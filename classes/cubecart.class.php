@@ -325,6 +325,13 @@ class Cubecart {
                         $this->_sso_login();
                     }
                     break;
+                case 'chatroom':
+                    if($GLOBALS['user']->is()){
+                        $this->_enter_chatroom();
+                    } else {
+                        $GLOBALS['gui']->setError($GLOBALS['language']->account['login_remind']);
+                    }
+                    break;
 
 
 				case 'newsletter':
@@ -1924,7 +1931,11 @@ class Cubecart {
         } else {
             echo "Please log in.";
         }
-	}
+    }
+
+    private function _enter_chatroom(){
+        echo "hello";
+    }
 	/**
 	 * Logout
 	 */
