@@ -21,7 +21,7 @@ $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
 <body>
     <div id="page-wrap">
     	<div id="header">
-        	<h1>CubeCart</h1>
+        	<h1><a href="/CubeCart2/images/logo.jpg">cubecart</a></h1>
         	<div id="you"><span>Logged in as:</span> <?php echo $_SESSION['CHATROOM_USER_FIRST']; ?></div>
         </div>
         
@@ -30,16 +30,18 @@ $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
             	<h3>Rooms</h3>
                 <ul>
                     <?php
+			$user_name = $_SESSION['CHATROOM_USER_EMAIL'];
                         while($rooms = mysql_fetch_array($roomResults)):
-                            $room = $rooms['name'];
-                            $query = mysql_query("SELECT * FROM `cubecartCubeCart_chatrooms_users` WHERE `room` = '$room' ") or die("Cannot find data". mysql_error());
-                            $numOfUsers = mysql_num_rows($query);
+                            $room = $rooms['name'];    
+                            $query = mysql_query("SELECT * FROM `cubecartCubeCart_chatrooms_users` WHERE `room` = '$room' and `username` = '$user_name'");
+			    if ( mysql_num_rows($query) ) :
+			    	$query = mysql_query("SELECT * FROM `cubecartCubeCart_chatrooms_users` WHERE `room` = '$room'");
+                            	$numOfUsers = mysql_num_rows($query);
                     ?>
                     <li>
-                    <?php echo $room; echo $numOfUsers; ?>
-<!--a href="room/?name=<?php echo $rooms['name']?>"><?php echo $rooms['name'] . "<span>Users chatting: <strong>" . $numOfUsers . "</strong></span>" ?></a-->
+                    <a href="room/?name=<?php echo $rooms['name']?>"><?php echo $rooms['name'] . "<span>Users chatting: <strong>" . $numOfUsers . "</strong></span>" ?></a>
                     </li>
-                    <?php endwhile; ?>
+                    <?php endif; endwhile; ?>
                 </ul>
             </div>
         </div>   
