@@ -307,8 +307,14 @@ class Cubecart {
 					$GLOBALS['smarty']->assign('SECTION_NAME', 'category');
 					$this->_category();
 				break;
-
-
+				case 'statistics':
+					if ($GLOBALS['user']->is()) {
+						//display user statistics
+						$this->_statistics();
+					} else {
+						httpredir('index.php');
+					}
+				break;
 				case 'login':
 					if ($GLOBALS['user']->is()) {
 						httpredir('index.php');
@@ -1932,6 +1938,16 @@ class Cubecart {
 		foreach ($GLOBALS['hooks']->load('class.cubecart.construct.logout') as $hook) include $hook;
 		$GLOBALS['gui']->setNotify($GLOBALS['language']->account['notify_logged_out']);
 		$GLOBALS['user']->logout();
+	}
+
+	private function _statistics(){
+		$statistics  = Statistics::getInstance();
+		$stats  = $statistics -> getPrevLogin($GLOBALS['user']->get('email'),$GLOBALS['user']->get('customer_id'));
+		$stats = array_merge($statistics -> getOnlineUsers(), $stats);
+//		$stats = array_merge( array('online_users'  => 1,), $stats);
+		$GLOBALS['smarty']->assign('STATISTICS', $stats);
+	        $content = $GLOBALS['smarty']->fetch('templates/content.statistics.php');
+		$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
 	}
 
 	/**

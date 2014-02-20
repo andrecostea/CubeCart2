@@ -290,6 +290,7 @@ class GUI {
 			$this->_displaySearchBox();
 			$this->_displaySaleItems();
 			$this->_displayMailingList();
+			$this->_displayStatistics();
 			$this->_displayDocuments();
 			$this->_displayRandomProduct();
 			$this->_displayPopularProducts();
@@ -819,6 +820,15 @@ class GUI {
 		foreach ($GLOBALS['hooks']->load('class.gui.display_mailing_list') as $hook) include $hook;
 		$content = $GLOBALS['smarty']->fetch('templates/box.newsletter.php');
 		$GLOBALS['smarty']->assign('MAIL_LIST', $content);
+	}
+
+	/**
+	 * Display mailing list box
+	 */
+	private function _displayStatistics() {
+		//foreach ($GLOBALS['hooks']->load('class.gui.display_statistics') as $hook) include $hook;
+		$content = $GLOBALS['smarty']->fetch('templates/box.statistics.php');
+		$GLOBALS['smarty']->assign('STATISTICS', $content);
 	}
 
 	/**

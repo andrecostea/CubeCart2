@@ -67,7 +67,7 @@
 		 {include file='templates/box.errors.php'} {if isset($CHECKOUT_PROGRESS)}{$CHECKOUT_PROGRESS}{/if} {$PAGE_CONTENT}
 	</div>
 	<div class="contentRight">
-		 {$SHOPPING_CART} {$MAIL_LIST} {$RANDOM_PROD}
+		 {$SHOPPING_CART} {$MAIL_LIST} {$STATISTICS} {$RANDOM_PROD}
 	</div>
 	<div class="clear">
 		&nbsp;

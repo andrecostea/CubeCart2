@@ -1943,5 +1943,11 @@
       <string name="password_new" introduced="5.0.0"><![CDATA[Nueva contraseña]]></string>
       <string name="title" introduced="5.0.0"><![CDATA[Título]]></string>
     </group>
+    <group name="user_statistics">
+    	<string name="login_to_display" introduced="5.0.0"><![CDATA[to display statistics.]]></string>
+	<string name="login" introduced="5.0.0"><![CDATA[Login]]></string>
+	<string name="statistics" introduced="5.0.0"><![CDATA[Statistics.]]></string>
+        <string name="useful_info" introduced="5.0.0"><![CDATA[General Info]]></string>
+  </group>
   </translation>
 </language>

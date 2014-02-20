@@ -74,6 +74,7 @@
 		{if isset($POPULAR_PRODUCTS)}{$POPULAR_PRODUCTS}{/if}
 		{$SALE_ITEMS}
 		{$MAIL_LIST}
+		{$STATISTICS}
 	  </div>
 
   </div>

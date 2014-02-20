@@ -59,6 +59,7 @@
           {$LIVE_CHAT_ROOM}
 		</div>
 		{$MAIL_LIST}
+	        {$STATISTICS}
 	  </div>
 	  <div id="page_content">
 	    <div id="header">

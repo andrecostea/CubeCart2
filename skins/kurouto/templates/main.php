@@ -60,6 +60,7 @@
 		{$CATEGORIES}
 		{$SALE_ITEMS}
 		{$MAIL_LIST}
+		{$STATISTICS}
 	  </div>
 	  <div class="sidebar" id="sidebar_right">
 		{$SHOPPING_CART}

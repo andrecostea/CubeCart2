@@ -47,7 +47,7 @@
         {include file='templates/box.errors.php'}
 		{$PAGE_CONTENT}
         {if isset($SECTION_NAME) && ($SECTION_NAME == "home")}
-        {$MAIL_LIST}     
+        {$MAIL_LIST}     {$STATISTICS} 
         <h2>Store Settings</h2>
         <fieldset>{$CURRENCY}{$LANGUAGE}</fieldset> {/if} 
       </div>            

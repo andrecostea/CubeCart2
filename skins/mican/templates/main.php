@@ -65,6 +65,7 @@
 			{$CATEGORIES}
 			{$SALE_ITEMS}
 			{$MAIL_LIST}
+			{$STATISTICS}
 		  </div>
 		  <div class="sidebar" id="sidebar_right">
 			{if isset($POPULAR_PRODUCTS)}{$POPULAR_PRODUCTS}{/if}

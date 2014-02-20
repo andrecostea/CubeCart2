@@ -19,5 +19,15 @@
       <string name="state">
         <![CDATA[County]]></string>
     </group>
+    <group name="user_statistics">
+    	<string name="login_to_display" introduced="5.0.0"><![CDATA[to display statistics.]]></string>
+	<string name="login" introduced="5.0.0"><![CDATA[Login]]></string>
+	<string name="statistics" introduced="5.0.0"><![CDATA[Statistics]]></string>
+        <string name="useful_info" introduced="5.0.0"><![CDATA[General Info]]></string>
+	<string name="personal_info" introduced="5.0.0"><![CDATA[Personal Info]]></string>
+	<string name="general_info" introduced="5.0.0"><![CDATA[Public Statistics]]></string>
+	<string name="last_bought" introduced="5.0.0"><![CDATA[Last Bought Product:]]></string>
+	<string name="last_login" introduced="5.0.0"><![CDATA[Your Previous Login:]]></string>
+  </group>
   </translation>
 </language>
