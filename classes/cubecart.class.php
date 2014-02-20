@@ -327,7 +327,8 @@ class Cubecart {
                     break;
                 case 'chatroom':
                     if($GLOBALS['user']->is()){
-                        $this->_enter_chatroom();
+                        $_SESSION['CHATROOM_USER_ID'] = $GLOBALS['user']->getId();
+                        httpredir('chatroom_index.php');
                     } else {
                         $GLOBALS['gui']->setError($GLOBALS['language']->account['login_remind']);
                     }
@@ -1933,9 +1934,6 @@ class Cubecart {
         }
     }
 
-    private function _enter_chatroom(){
-        echo "hello";
-    }
 	/**
 	 * Logout
 	 */
