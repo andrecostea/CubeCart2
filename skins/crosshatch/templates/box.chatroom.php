@@ -4,6 +4,6 @@
 <script>
 function pop_chatroom()
 {
-    window.open("https://www.google.com");
+    window.open("http://localhost/CubeCart2/index.php?_a=chatroom");
 }
 </script>

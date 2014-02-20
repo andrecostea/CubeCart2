@@ -331,6 +331,14 @@ class Cubecart {
                         $this->_sso_login();
                     }
                     break;
+                case 'chatroom':
+                    if($GLOBALS['user']->is()){
+                        $_SESSION['CHATROOM_USER_ID'] = $GLOBALS['user']->getId();
+                        httpredir('chatroom_index.php');
+                    } else {
+                        $GLOBALS['gui']->setError($GLOBALS['language']->account['login_remind']);
+                    }
+                    break;
 
 
 				case 'newsletter':
@@ -1930,7 +1938,8 @@ class Cubecart {
         } else {
             echo "Please log in.";
         }
-	}
+    }
+
 	/**
 	 * Logout
 	 */

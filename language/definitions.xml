@@ -22,6 +22,7 @@
     <string name="error_details_wrong" introduced="5.0.0"><![CDATA[Incorrect details, please try again.]]></string>
     <string name="error_email_in_use" introduced="5.0.0"><![CDATA[That email address is already being used.]]></string>
     <string name="error_login" introduced="5.0.0"><![CDATA[Invalid Username and/or Password]]></string>
+    <string name="login_remind" introduced="5.0.0"><![CDATA[Please login first]]></string>
     <string name="error_login_block" introduced="5.0.0"><![CDATA[User login blocked. Please try again later]]></string>
     <string name="error_name_required" introduced="5.0.0"><![CDATA[We need to know your name.]]></string>
     <string name="error_password_empty" introduced="5.0.0"><![CDATA[Your password can not be empty.]]></string>
