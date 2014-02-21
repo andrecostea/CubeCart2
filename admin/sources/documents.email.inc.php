@@ -13,21 +13,6 @@ $email_types	= array(
 			'{$DATA.reset_link}' 	=> $lang['email']['macro_link_password'],
 		),
 	),
-	'account.password_updated' => array(
-		'description'	=> $lang['email']['title_macro_user_password'],
-		'macros' => array(
-			'{$DATA.first_name}'	=> $lang['email']['macro_first_name'],
-			'{$DATA.last_name}'	=> $lang['email']['macro_last_name'],
-		),
-	),
-	'account.email_auth' => array(
-		'description'	=> $lang['email']['title_macro_user_password'],
-		'macros' => array(
-			'{$DATA.first_name}'	=> $lang['email']['macro_first_name'],
-			'{$DATA.last_name}'	=> $lang['email']['macro_last_name'],
-			'{$DATA.confirm_link}' 	=> $lang['email']['macro_link_confirmation'],
-		),
-	),
 	'admin.order_received' => array(
 		'description'	=> $lang['email']['title_macro_admin_order'],
 		'macros' => array(

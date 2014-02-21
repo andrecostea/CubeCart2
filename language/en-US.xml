@@ -29,12 +29,14 @@
     	<string name="login_to_display" introduced="5.0.0"><![CDATA[to display statistics.]]></string>
 	<string name="login" introduced="5.0.0"><![CDATA[Login]]></string>
 	<string name="statistics" introduced="5.0.0"><![CDATA[Statistics]]></string>
-        <string name="useful_info" introduced="5.0.0"><![CDATA[General Info]]></string>
+        <string name="useful_info" introduced="5.0.0"><![CDATA[Useful Info]]></string>
 	<string name="personal_info" introduced="5.0.0"><![CDATA[Personal Info]]></string>
 	<string name="general_info" introduced="5.0.0"><![CDATA[Public Statistics]]></string>
-	<string name="last_bought" introduced="5.0.0"><![CDATA[Last Bought Product:]]></string>
+	<string name="last_bought" introduced="5.0.0"><![CDATA[Last Transaction:]]></string>
 	<string name="last_login" introduced="5.0.0"><![CDATA[Your Previous Login:]]></string>
 	<string name="online_users" introduced="5.0.0"><![CDATA[Online Visitors:]]></string>
+	<string name="users_country" introduced="5.0.0"><![CDATA[Our Customers Distribution per Country:]]></string>
+	<string name="users_traffic" introduced="5.0.0"><![CDATA[Past Week's Traffic:]]></string>
   </group>
   </translation>
 </language>

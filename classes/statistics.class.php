@@ -20,6 +20,10 @@
  * @version 1.1.0
  * @since 5.0.0
  */
+
+include ("jpgraph/src/jpgraph.php");
+include ("jpgraph/src/jpgraph_pie.php");
+
 class Statistics {
 
 	/**
@@ -42,22 +46,22 @@ class Statistics {
 	}
 
 	public function getPrevLogin($email, $customer_id){
-		$query = "SELECT `time`, `ip_address` FROM `".$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_access_log` WHERE `username`= '".$email."' AND `user_id` =".$customer_id." ORDER BY `time` DESC LIMIT 1";
+		$query = "SELECT `time`, `ip_address` FROM `".$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_access_log` WHERE `username`= '".$email."' AND `user_id` =".$customer_id." ORDER BY `time` DESC LIMIT 2";
 		/*select time, ip_address, username, user_id  from cubecartCubeCart_access_log where username="student@student.com" order by time desc limit 1
 */
 		$res = $GLOBALS['db']->query($query);
-		$ret = array ('prev_login_date' => date('d/m/Y H:i:s', $res[0]['time']),
-			      'prev_login_ip'   => $res[0][ip_address],
+		$ret = array ('prev_login_date' => ($res[1]!== null ? date('d/m/Y H:i:s', $res[1]['time']) : 'N.A.'),
+			      'prev_login_ip'   => ($res[1]!== null ? ($res[1]['ip_address']) : 'N.A.'),
 			      'prev_login_browser' => 3,);
 		return $ret;
 	}
 
-	public function getLastTransaction($email, $customer_id){
+	public function getLastTransaction($customer_id){
 		$query = "SELECT `time` FROM `".$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_transactions` WHERE `customer_id`= ".$customer_id." ORDER BY `time` DESC LIMIT 1";
-		/*select time, ip_address, username, user_id  from cubecartCubeCart_access_log where username="student@student.com" order by time desc limit 1
+		/*select time from cubecartCubeCart_transactions where customer_id=.. order by time desc limit 1;
 */
 		$res = $GLOBALS['db']->query($query);
-		$ret = array ('prev_transaction' => date('d/m/Y H:i:s', $res[0]['time']),); //check for no trans
+		$ret = array ('prev_transaction' => ($res[0] !== null ? date('d/m/Y H:i:s', $res[0]['time']) : 'N.A.'),); //check for no trans
 		return $ret;
 	}
 
@@ -69,5 +73,39 @@ class Statistics {
 		$ret = array ('online_users' => $res[0]['ct'],);
 		return $ret;
 	}
-		
+
+	public function getVisitorsPCountry(){
+		/**select C.name,count(*) as cnt from cubecartCubeCart_addressbook as A, cubecartCubeCart_geo_country as C where A.country=C.numcode group by country;*/
+		$A=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_addressbook";
+		$C=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_geo_country";
+		$query = "SELECT `".$C."`.`name`, count(*) as `cnt` FROM `".$A."`,`".$C."` WHERE `".$A."`.`country`=`".$C."`.`numcode` GROUP BY `country`";
+		$res = $GLOBALS['db']->query($query);
+		$countries = '';
+		$users     = '';
+		foreach ($res as $value){
+			$countries = $countries.'_c[]='.urlencode($value['name']).'&';
+			$users     = $users.'_u[]='.urlencode($value['cnt']).'&';
+		}
+//		$ret = array ('countries' => $countries, 'users' => $users);
+		$ret['cchart'] = 'classes/chartcountry.php?'.$countries.'&'.$users;
+		return $ret;
+	}
+
+	public function getVisitorsPDay(){
+		/**select dayofweek(from_unixtime(time)),count(*) from cubecartCubeCart_access_log group by date(from_unixtime(time)) LIMIT 7;*/ //can have days with zero visits
+		$A=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_access_log";
+		$query = "SELECT dayofweek(from_unixtime(time)) as 'day', count(*) as `cnt` FROM `".$A."` GROUP BY date(from_unixtime(time)) LIMIT 7";
+		$res   = $GLOBALS['db']->query($query);
+		$days  = '';
+		$users = '';
+		foreach ($res as $value){
+			$days = $days.'_d[]='.$value['day'].'&';
+			$users= $users.'_u[]='.$value['cnt'].'&';
+		}
+//		$ret = array ('countries' => $countries, 'users' => $users);
+		$ret['uchart'] = 'classes/chartusers.php?'.$days.'&'.$users;
+		return $ret;
+	}
+
 }
+

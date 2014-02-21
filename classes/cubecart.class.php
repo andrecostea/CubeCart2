@@ -21,7 +21,10 @@
  * @version 1.1.0
  * @since 5.0.0
  */
+
 require 'openid.php';
+//require 'phplot.php';
+
 class Cubecart {
 	/**
 	 * Holds the current basket
@@ -1952,7 +1955,12 @@ class Cubecart {
 	private function _statistics(){
 		$statistics  = Statistics::getInstance();
 		$stats  = $statistics -> getPrevLogin($GLOBALS['user']->get('email'),$GLOBALS['user']->get('customer_id'));
+		$statslt  = $statistics -> getLastTransaction($GLOBALS['user']->get('customer_id'));
+		//$timesone = new Date().getTimezoneOffset();
 		$stats = array_merge($statistics -> getOnlineUsers(), $stats);
+		$stats = array_merge($statslt, $stats);
+		$stats = array_merge($statistics -> getVisitorsPCountry(), $stats);
+		$stats = array_merge($statistics -> getVisitorsPDay(), $stats);
 //		$stats = array_merge( array('online_users'  => 1,), $stats);
 		$GLOBALS['smarty']->assign('STATISTICS', $stats);
 	        $content = $GLOBALS['smarty']->fetch('templates/content.statistics.php');
