@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("../dbcon.php");
-  
+
 $name = $_GET['name'];
 $getRooms = "SELECT * FROM cubecartCubeCart_chatrooms WHERE name = '$name'";
 $roomResults = mysql_query($getRooms);
@@ -22,15 +22,15 @@ while ($rooms = mysql_fetch_array($roomResults)) {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Welcome to: <?php echo $name; ?></title>
     <link rel="stylesheet" type="text/css" href="../main.css"/>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="chat.js"></script>
-    <script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="chat.js" type="text/javascript"></script>
+    <script type="text/javascript">
     	var chat = new Chat('<?php echo $file; ?>');
-    	chat.init();
+        chat.init();
     	chat.getUsers(<?php echo "'" . $name ."','" .$_SESSION['CHATROOM_USER_EMAIL'] . "'"; ?>);
-    	var name = '<?php echo $_SESSION['CHATROOM_USER_EMAIL'];?>';
+        var name = '<?php echo $_SESSION['CHATROOM_USER_FIRST'];?>';
     </script>
-    <script src="settings.js"></script>
+    <script type="text/javascript" src="settings.js"></script>
 </head>
 
 <body>

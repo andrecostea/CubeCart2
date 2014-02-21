@@ -13,10 +13,14 @@ $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
 
 <html>
 <head>
+<script>
+    document.write("<p> ABCDE </p>");
+</script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CubeCart Chatrooms</title>
     <link rel="stylesheet" type="text/css" href="main.css"/>
 </head>
+
 
 <body>
     <div id="page-wrap">
