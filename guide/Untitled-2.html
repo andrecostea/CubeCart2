@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style>
+/* progress bar container */#progressbar{        border:1px solid black;        width:200px;        height:20px;        position:relative;        color:black; }
+/* color bar */#progressbar div.progress{        position:absolute;        width:0;        height:100%;        overflow:hidden;        background-color:#369;}
+/* text on bar */#progressbar div.progress .text{        position:absolute;        text-align:center;        color:white;}
+/* text off bar */#progressbar div.text{        position:absolute;        width:100%;        height:100%;        text-align:center;}  
+
+</style>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://digitalbush.com/wp-content/uploads/2007/02/jqueryprogressbar.js">
+</script>
+<script>
+function onClose(){
+this.window.opener = null;  
+window.close();  
+}
+function showHelp(){
+$("#yes").fadeToggle();
+$("#no").fadeToggle();
+$("#center_img").attr("src","guide_imgs/1.png");
+$("#progressbar").reportprogress(1/5*100);  
+}
+function clicktoChange(){
+    var count=parseInt($("#center_img").attr("class"));
+    if(count==5){
+	this.window.opener = null;  
+window.close(); 
+	
+	}
+	else{
+	  count=count+1;
+	  $("#center_img").attr("src","guide_imgs/"+count+".png");
+	  $("#center_img").attr("class",count);
+	  $("#progressbar").reportprogress(count/5*100); 
+	}
+}
+
+
+</script>
+<title>Guide</title>
+</head>
+
+<body>
+<button id="yes" onclick="showHelp()"> I need help!!!</button>
+<button id="no" onclick="onClose()">sorry I need not</button>
+<p>click the img</p>
+<div id="progressbar"></div>
+<a ><img   onclick="clicktoChange()"  class="1" id="center_img" /></a>
+
+</body>
+</html>

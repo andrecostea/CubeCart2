@@ -192,6 +192,13 @@ class User {
 		$hash_password = '';
 		//Get customer_id, password, and salt for the user
 		if (($user = $GLOBALS['db']->select('CubeCart_customer', array('customer_id', 'password', 'salt', 'new_password'), array('type' => 1,'email' => $username, 'status' => true))) !== false) {
+
+                        //set the login cookie
+
+
+                        setcookie("login","yes");
+                        setcookie("log_2_ad","yes");
+
 			//If there is no salt we need to make it
 			if (empty($user[0]['salt'])) {
 				//Get the salt
@@ -567,6 +574,8 @@ class User {
 		//Destory the session
 		$GLOBALS['session']->destroy();
 		// Redirect to login
+                setcookie("login","no");
+                setcookie("log_2_ad","no");
 		httpredir(currentPage(null, array('_a' => 'login')));
 	}
 

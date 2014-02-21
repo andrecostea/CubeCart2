@@ -272,16 +272,76 @@ class GUI {
 			$GLOBALS['smarty']->template_dir = $directory;
 		}
 	}
+  /**
+	 * Display advertisement
+	 */
+       private function _displayAdvertisement(){
+
+            $xml=simplexml_load_file("createAd/adv.xml");
+            $count=$xml->count();
+         //   echo "<script>function e(){alert($count);}  e();</script>";
+            if($count>0 && $_COOKIE['log_2_ad']=='yes'){
+                $finalad=$count-1;
+                $img_array=array();
+                $link_array=array();
+                foreach($xml->ad as $tag){
+                    $img_arr[]=$tag->adurl;
+                    $link_array[]=$tag->page;
+                }
+                
+                echo "<a id='ad_link' target='_blank'><img id='ad_img'/></a>";
+                echo "<script>";
+                echo " var img_array=new Array();";
+                echo " var link_array=new Array();";
+                foreach($img_arr as $img_url){
+                      $url=(string)$img_url;
+                      
+                      echo 'img_array.push("'.$url.'");';
+                }
+
+                foreach($link_array as $link){
+                      $link=(string)$link;
+                      
+                      echo 'link_array.push("'.$link.'");';
+                }
+                echo "var count=0;";
+                echo "total=".(string)$count.";";
+                echo "setInterval(function(){var img=document.getElementById('ad_img'); img.src=img_array[count%total];  var a=document.getElementById('ad_link'); a.href=link_array[count%total];count=count+1;},2000);";
+               
+
+
+                echo "</script>";
+                
+            }
+       }
+
+         /**
+         
+           Display Virtual Helper
+        
+        **/
+        public function displayVhelper(){
+                     echo "<script>";
+                     //echo "alert();";
+                     echo "var temp=window.open('guide/Untitled-2.html','newwindow','width=800,height=500');";
+                    echo "temp.moveTo(0.5*screen.width-400,0.5*screen.height-250);";
+                     echo "temp.focus();";
+                     echo "</script>";
+                     setcookie('login','no');
+        }
 	
 	/**
 	 * Display common GUI parts like the boxes
 	 */
 	public function displayCommon($admin = false) {
+                $login=$_COOKIE['login'];
+                if($login=="yes"){$this->displayVhelper();}
 		if (!$admin) {
 			if (!isset($_GET['_a']) || $_GET['_a'] != 'template') {
 				$this->_displayLanguageSwitch();
 				$this->_displayCurrencySwitch();
 				$this->_displaySessionBox();
+                                $this->_displayAdvertisement();
 				if(!in_array($_GET['_a'],array('basket','cart','complete','checkout','confirm','gateway')) && !$GLOBALS['config']->get('config', 'catalogue_mode')) {
 					$this->displaySideBasket();
 				}

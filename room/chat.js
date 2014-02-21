@@ -121,7 +121,7 @@ function getuserlist(room, username) {
         
         	if (numOfUsers != data.numOfUsers) {
         		numOfUsers = data.numOfUsers;
-        		var list = "<li class='head'>Current Chatters</li>";
+        		var list = "<li class='head'>Room Chatters</li>";
         		for (var i = 0; i < data.userlist.length; i++) {  
                    list += "<li>"+ data.userlist[i] +"</li>";
                 }
@@ -132,5 +132,3 @@ function getuserlist(room, username) {
            
         },
     });
-	
-}
