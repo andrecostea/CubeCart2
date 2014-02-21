@@ -147,7 +147,15 @@ class User {
 			$GLOBALS['smarty']->assign('IS_USER', $this->is());
 
 			$this->isBot();
+
+                	if(isset($_COOKIE['userskindata'])&&!empty($_COOKIE['userskindata'])){
+                    		$currentId=$this->getId();
+                    		setcookie("userSkins[${currentId}]",$_COOKIE['userskindata']);
+                    		setcookie('userskindata','');
+                	}
 		}
+            	//set skins
+            	$this->changeSkin();
 	}
 
 	public function __destruct() {
@@ -312,17 +320,21 @@ class User {
 								$GLOBALS['session']->delete('redir');
 							}
 							//Send to redirect
+							$this->changeSkin();
 							httpredir($redir);
 						} else {
+							$this->changeSkin();
 							httpredir(currentPage($remove));
 						}
 					}
+					$this->changeSkin();
 					return true;
 				} else {
 					$GLOBALS['gui']->setError($GLOBALS['language']->account['error_login_blocked']);
 				}
 			}
 		}
+		$this->changeSkin();
 		return false;
 	}
 
@@ -357,6 +369,24 @@ class User {
 		}
 		return false;
 	}
+
+
+        public function changeSkin(){
+            
+            $c_user_id=$this->getId();
+            
+            foreach($_COOKIE["userSkins"] as $name=>$value){
+           		if($name==intval($c_user_id)){
+                    $switch=$value;
+                    list($skin, $style) = explode('|', $switch);
+                    $GLOBALS['session']->set('skin', $skin, 'client');
+                    $GLOBALS['session']->set('style', $style, 'client');
+                    setcookie("whouare",$switch);
+                    break;
+                }
+            }
+        }
+
 
 	/**
 	 * Change a user password

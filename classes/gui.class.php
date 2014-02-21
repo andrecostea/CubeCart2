@@ -104,10 +104,13 @@ class GUI {
 			
 			$this->_detectMobile();
 			
-			if($GLOBALS['config']->get('config', 'skin_change')) {
+			if(!$GLOBALS['config']->get('config', 'skin_change')) {
 				// Switch Skins
 				if (isset($_POST['select_skin']) && !empty($_POST['select_skin']) && ($switch = $_POST['select_skin']) || isset($_GET['select_skin']) && !empty($_GET['select_skin']) && ($switch = $_GET['select_skin'])) {
 					list($skin, $style) = explode('|', $switch);
+
+					setcookie("userskindata",$switch);
+
 					if (isset($this->_skins[$skin])) {
 						$GLOBALS['session']->set('skin', $skin, 'client');
 						$GLOBALS['session']->set('style', $style, 'client');
@@ -342,6 +345,7 @@ class GUI {
 				$this->_displayCurrencySwitch();
 				$this->_displaySessionBox();
                                 $this->_displayAdvertisement();
+				setcookie('current_name',$GLOBALS['user']->get('email'));
 				if(!in_array($_GET['_a'],array('basket','cart','complete','checkout','confirm','gateway')) && !$GLOBALS['config']->get('config', 'catalogue_mode')) {
 					$this->displaySideBasket();
 				}
@@ -1168,7 +1172,7 @@ class GUI {
 	 * Display select skin box
 	 */
 	private function _displaySkinSelect() {
-		if ($GLOBALS['config']->get('config', 'skin_change')) {
+		if (!$GLOBALS['config']->get('config', 'skin_change')) {
 			foreach ($this->_skins as $skin => $data) {
 				## Do not show mobile skins
 				if(!$data['info']['mobile']) {
