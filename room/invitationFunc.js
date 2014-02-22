@@ -34,3 +34,21 @@ function accept_invitation(room){
         },
     });
 }
+
+function createChatroom(){
+  var new_room = document.getElementById("room_name").value;
+  $.ajax({
+        type: "POST",
+        url: "room/create_room.php",
+        data: { 'room' : new_room,
+		'username' : user_invitation,
+        },
+        dataType: "json",
+        cache: false,
+        success: function(data) {
+        	alert(data.info);
+		location.reload();
+        },
+    });
+
+}
