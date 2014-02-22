@@ -65,6 +65,21 @@ class Statistics {
 		return $ret;
 	}
 
+
+	public function getUsersCountryX($customer_id){
+		/* select count(distinct customer_id) as cnt, C.name from (select distinct country from cubecartCubeCart_addressbook where customer_id = 39) as A, cubecartCubeCart_addressbook as B, cubecartCubeCart_geo_country as C where A.country=B.country and customer_id!=39 and A.country=C.numcode group by A.country;*/
+		$A=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_addressbook";
+		$C=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_geo_country";
+		$query = "SELECT COUNT(DISTINCT `customer_id`) as `cnt`, `C`.`name` FROM (SELECT DISTINCT `country` FROM `".$A."` WHERE `customer_id` = ".$customer_id.") as `A`, `".$A."` as `B`, `".$C."` as C WHERE `A`.`country`=`B`.`country` AND `customer_id` != ".$customer_id." and `A`.`country`=`C`.`numcode` GROUP BY `A`.`country`";
+		$res = $GLOBALS['db']->query($query);
+		$ret_str = '';
+		foreach ($res as $r)
+			$ret_str = $ret_str.$r['name'].': '.$r['cnt'].' / ';
+		$ret = array ('users_from_same_country'  =>  $ret_str);
+		return $ret;
+	}
+
+
 	public function getOnlineUsers(){
 		/*select count(*) from cubecartCubeCart_sessions;*/
 
@@ -93,8 +108,12 @@ class Statistics {
 
 	public function getVisitorsPDay(){
 		/**select dayofweek(from_unixtime(time)),count(*) from cubecartCubeCart_access_log group by date(from_unixtime(time)) LIMIT 7;*/ //can have days with zero visits
+
+/**
+select dayofweek(from_unixtime(time)),count(*) from (select * from cubecartCubeCart_access_log order by time desc) as A  group by date(from_unixtime(time)) order by date(from_unixtime(time)) asc  LIMIT 7;
+*/
 		$A=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_access_log";
-		$query = "SELECT dayofweek(from_unixtime(time)) as 'day', count(*) as `cnt` FROM `".$A."` GROUP BY date(from_unixtime(time)) LIMIT 7";
+		$query = "SELECT dayofweek(from_unixtime(`time`)) AS 'day', COUNT(*) AS `cnt` FROM (SELECT * FROM `".$A."` ORDER BY `time` DESC) as `A` GROUP BY date(from_unixtime(`time`)) ORDER BY date(from_unixtime(`time`)) ASC LIMIT 7";
 		$res   = $GLOBALS['db']->query($query);
 		$days  = '';
 		$users = '';

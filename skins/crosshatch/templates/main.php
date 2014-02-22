@@ -54,6 +54,7 @@
 <div id="content">
 	<div class="contentLeft">
 		 {$SESSION} {if isset($POPULAR_PRODUCTS)}{$POPULAR_PRODUCTS}{/if} {$SALE_ITEMS}
+		{$STATISTICS}
 	</div>
 	<div class="contentMid">
 		<div id="breadcrumb">
@@ -67,7 +68,7 @@
 		 {include file='templates/box.errors.php'} {if isset($CHECKOUT_PROGRESS)}{$CHECKOUT_PROGRESS}{/if} {$PAGE_CONTENT}
 	</div>
 	<div class="contentRight">
-		 {$SHOPPING_CART} {$MAIL_LIST} {$STATISTICS} {$RANDOM_PROD}
+		 {$SHOPPING_CART} {$MAIL_LIST} {$RANDOM_PROD}
 	</div>
 	<div class="clear">
 		&nbsp;

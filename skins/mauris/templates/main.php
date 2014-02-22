@@ -61,11 +61,11 @@
 	<div class="{$SECTION_NAME}_wrapper">
 	  <div class="sidebar" id="sidebar_right">
 		{$CATEGORIES}
+		{$STATISTICS}
 		{$SALE_ITEMS}
 		{$RANDOM_PROD}
 		{if isset($POPULAR_PRODUCTS)}{$POPULAR_PRODUCTS}{/if}
 		{$MAIL_LIST}
-		{$STATISTICS}
 	  </div>
 	  <div id="page_content">
 		{include file='templates/box.errors.php'}

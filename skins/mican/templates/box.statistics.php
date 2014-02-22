@@ -1,8 +1,11 @@
 <div id="user_statistics">
-  <h3>{$LANG.newsletter.mailing_list}</h3>
+  <h3>{$LANG.user_statistics.useful_info}</h3>
   {if $IS_USER}
-	<p><a href="{$STORE_URL}/index.php?_a=statistics">{$LANG.statistics.statistics}</a></p>
+	<ul id="menu" class="accordion">
+	   <li><a href="{$STORE_URL}/index.php?_a=statistics">{$LANG.user_statistics.statistics}</a></li>
+	</ul>
   {else}
-	<p><a href="{$STORE_URL}/index.php?_a=login">{$LANG.newsletter.login}</a>{$LANG.statistics.login_to_display}</p>
+	<br />
+	<p><a href="{$STORE_URL}/index.php?_a=login">&nbsp;{$LANG.user_statistics.login}</a> {$LANG.user_statistics.login_to_display}</p>
   {/if}
 </div>
