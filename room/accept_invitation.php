@@ -11,5 +11,6 @@ mysql_query($insert_chatrooms_users) or die(mysql_error());
 $delete_invitation = "DELETE FROM `cubecartCubeCart_chatrooms_invitation` WHERE `username` = '$username' and `room` = '$room'";
 mysql_query($delete_invitation) or die(mysql_error());
 $data['check'] = 'true';
-$data['errorinfo'] = 'The invitation has been sent successfully!';
+$data['errorinfo'] = 'Accept invitation successfully!';
+echo json_encode($data);
 ?>

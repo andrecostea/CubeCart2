@@ -9,7 +9,7 @@
 <?php
 
     function getfile($f) {
-    
+    	$lines = "";
     	if (file_exists($f)) {
             $lines = file($f);
         }	
