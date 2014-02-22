@@ -97,4 +97,6 @@
 	public function updateOld($md5, $salt) {
 		return md5(md5($salt).$md5);
 	}
+
  }
+

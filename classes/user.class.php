@@ -623,7 +623,8 @@ class User {
 			if (($check = $GLOBALS['db']->select('CubeCart_customer', false, array('email' => $email))) !== false) {
 				// Generate validation key
 				$validation	= Password::getInstance()->createSalt();
-				
+				$timestamp      = date_timestamp_get(date_create());
+				$validation     = Password::getInstance()->getSalted($timestamp,$validation);
 				if (($GLOBALS['db']->update('CubeCart_customer', array('verify' => $validation), array('customer_id' => (int)$check[0]['customer_id']))) !== false) {
 				
 					// Send email
@@ -795,15 +796,17 @@ class User {
 				$insert = $existing[0]['customer_id'];
 			} else {
 				/*$insert = $GLOBALS['db']->insert('CubeCart_customer', $_POST); */ //andreeac
-				$_POST['verify'] = $_POST['salt'];
+				$validation	= Password::getInstance()->createSalt();
+				$timestamp      = date_timestamp_get(date_create());
+				$validation     = Password::getInstance()->getSalted($timestamp,$validation);
+				$_POST['verify'] = $validation;
 				$insert = $GLOBALS['db']->insert('CubeCart_customer', $_POST);
 			}
 
 			foreach ($GLOBALS['hooks']->load('class.user.register_user.inserted') as $hook) include $hook;
 
 			/* ===============  e-mail auth =================*/
-			$validation	= $_POST['verify'];//$_POST['password'];
-//					Password::getInstance()->getSalted($_POST['email'], $_POST['salt']);
+			$validation	= $_POST['verify'];
 			$mailer	= Mailer::getInstance();
 			$link['confirm_link'] = CC_STORE_URL.'/index.php?_a=recovery&validate='.$validation;//.'&email='.$_POST['email'];
 			$data = array_merge($_POST, $link);

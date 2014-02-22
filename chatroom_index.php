@@ -9,13 +9,37 @@ $userResults = mysql_query("SELECT * FROM cubecartCubeCart_customer where `custo
 $user = mysql_fetch_array($userResults);
 $_SESSION['CHATROOM_USER_EMAIL'] = $user['email'];
 $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
+
+if (isset($_POST['room_name']) && $_POST['room_name'] != NULL) {
+    $chatroom_name = cleanInput($_POST['room_name']);
+    if(checkVar($chatroom_name)){
+        $check_name = "SELECT * FROM `cubecartCubeCart_chatrooms` WHERE `name` = '$chatroom_name'";
+        if (!hasData($check_name)) {
+            $insertRoom = "INSERT INTO `cubecartCubeCart_chatrooms` (`id`, `name`, `numofuser`, `file`) VALUES ( NULL , '$chatroom_name', '100', '$chatroom_name')";
+            mysql_query($insertRoom) or die(mysql_error());
+            $chatuser_email = $_SESSION['CHATROOM_USER_EMAIL'];
+            $now = time();
+            $insertRoom_User = "INSERT INTO `cubecartCubeCart_chatrooms_users` (`id`, `username`, `room`, `mod_time`) VALUES ( NULL , '$chatuser_email', '$chatroom_name', '$now')";
+            mysql_query($insertRoom_User) or die(mysql_error());
+            $chatroom_url = 'http://localhost/CubeCart2/chatroom_index.php';
+            header("LOCATION:$chatroom_url");
+        } else {
+            echo "<script language=\"JavaScript\">\r\n";
+            echo "window.alert('The room is existing!');\r\n";
+            echo "history.back();\r\n";
+            echo "</script>";
+        }
+    } else {
+        echo "<script language=\"JavaScript\">\r\n";
+        echo "window.alert('Please input right room name!');\r\n";
+        echo "history.back();\r\n";
+        echo "</script>";
+    }
+}
 ?>
 
 <html>
 <head>
-<script>
-    document.write("<p> ABCDE </p>");
-</script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CubeCart Chatrooms</title>
     <link rel="stylesheet" type="text/css" href="main.css"/>
@@ -28,8 +52,16 @@ $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
         	<h1><a href="/CubeCart2/images/logo.jpg">cubecart</a></h1>
         	<div id="you"><span>Logged in as:</span> <?php echo $_SESSION['CHATROOM_USER_FIRST']; ?></div>
         </div>
-        
     	<div id="section">
+            <div id="creat">
+                <h3>Create room</h3>
+                <form id="creat-room-area" action="chatroom_index.php" method="post">
+                <label for="room_name">room name: </label><span><input type="text" name="room_name" id="room_name"/></span>
+                <input type="submit" name="submit" value="Create Room"/>
+                </form>
+            </div>
+          </div>
+          <div id="section">
             <div id="rooms">
             	<h3>Rooms</h3>
                 <ul>

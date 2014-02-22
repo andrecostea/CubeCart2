@@ -2495,10 +2495,10 @@ class Cubecart {
 		$GLOBALS['smarty']->assign('SECTION_NAME', 'recovery');
 /*andreeac**/
 		$email_post = $this->getFilteredEmail($_POST['email']);
-		$validate_post = $this->getAlphaNum($_POST['validate']);
-		if (isset($email_post) && isset($validate_post) && isset($_POST['password'])) {
+		$validate_get = $this->getAlphaNum($_GET['validate']);
+		if (isset($email_post) && isset($validate_get) && isset($_POST['password'])) {
 			//$validate = preg_replace ('/[^a-z0-9]/i', '', $_POST['validate']);
-			if ($GLOBALS['user']->passwordReset($email_post,$validate_post, $_POST['password'])) {
+			if ($GLOBALS['user']->passwordReset($email_post,$validate_get, $_POST['password'])) {
 				$GLOBALS['gui']->setNotify($GLOBALS['language']->account['notify_password_recovery_success']);
 				httpredir('?_a=account');
 			} else {
@@ -2507,12 +2507,12 @@ class Cubecart {
 		}
 		$email_get = $this->getFilteredEmail($_GET['email']);
 		$email		= (isset($email_get)) ? $email_get : null;
-		$validate_get   = $this->getAlphaNum($_GET['validate']);
-		$validate_get	= (isset($validate_get)) ? ($validate_get) : null;
+		//$validate_get   = $this->getAlphaNum($_GET['validate']);
+		//$validate_get	= (isset($validate_get)) ? ($validate_get) : null;
 		$GLOBALS['smarty']->assign('DATA', array(
 			'email'		=> (isset($email_post)) ? $email_post : $email,
 //			'validate'	=> (isset($_POST['validate'])) ?$_POST['validate'] : $_GET['validate'],
-			'validate'	=> (isset($validate_post)) ? $validate_post : $validate_get,
+			'validate'	=> (isset($validate_post)) ? $validate_post : '',
 		));
 		$content = $GLOBALS['smarty']->fetch('templates/content.recovery.php');
 		$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
