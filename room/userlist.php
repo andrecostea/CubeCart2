@@ -17,7 +17,10 @@ require_once("../dbcon.php");
 	$data['userlist'] = array();
 	while($user = mysql_fetch_array($getRoomUsers))
 	{
-		$data['userlist'][] = $user['username'];
+        $user_email = $user['username'];
+        $userResults = mysql_query("SELECT * FROM cubecartCubeCart_customer where `email` = '$user_email'");
+        $user_data = mysql_fetch_array($userResults);
+        $data['userlist'][] = $user_data['first_name'];
 	}
 	$data['userlist'] = array_reverse($data['userlist']);
 
