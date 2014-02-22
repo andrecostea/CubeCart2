@@ -48,7 +48,7 @@ while ($rooms = mysql_fetch_array($roomResults)) {
             <div id="invite-user-div">
 				<label>Input email: </label>
             	<input type="text" name="user" id="invite_user"/>
-	            <button id="invite" name="invite" onclick="inviteUserFunc()">Invite</button>
+	            <button id="invite" name="invite" onclick="inviteUserFunc()">Invite Friends</button>
             </div>
             <div id="left-room">
             </div>

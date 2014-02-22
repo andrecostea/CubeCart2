@@ -1,31 +1,54 @@
 function reject_invitation(room){
-  var user_reject = user_invitation;
+
   $.ajax({
         type: "GET",
-        url: "reject_invitation.php",
+        url: "room/reject_invitation.php",
         data: { 'room' : room,
-        	'username': username_invitation,
+        	'username': user_invitation,
         },
         dataType: "json",
         cache: false,
-        success: function(data) {
+	success: function(data) {
+        	alert(data.errorinfo);
+		location.reload();
+        },
+	error: function(data) {
         	alert(data.errorinfo);
         },
     });
 }
 
-function accept_invitation($room){
-  var user_accept = user_invitation;
+function accept_invitation(room){
+
   $.ajax({
         type: "GET",
-        url: "accept_invitation.php",
+        url: "room/accept_invitation.php",
         data: { 'room' : room,
-        	'username': username_invitation,
+        	'username': user_invitation,
         },
         dataType: "json",
         cache: false,
         success: function(data) {
         	alert(data.errorinfo);
+		location.reload();
         },
     });
+}
+
+function createChatroom(){
+  var new_room = document.getElementById("room_name").value;
+  $.ajax({
+        type: "POST",
+        url: "room/create_room.php",
+        data: { 'room' : new_room,
+		'username' : user_invitation,
+        },
+        dataType: "json",
+        cache: false,
+        success: function(data) {
+        	alert(data.info);
+		location.reload();
+        },
+    });
+
 }

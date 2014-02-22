@@ -8,8 +8,8 @@ var usernameid;
 function Chat (filetxt) {
 	file = filetxt;
 	this.init = chatInit;
-    this.update = updateChat;
-    this.send = sendChat;
+	this.update = updateChat;
+	this.send = sendChat;
 	this.getState = getStateOfChat;
 	this.trim = trimstr;
 	this.getUsers = getuserlist;
@@ -24,7 +24,7 @@ function wait(){
 }
 
 $.ajaxSetup({
-    cache: false // for ie
+	cache: false // for ie
 });
 
 //gets the state of the chat
@@ -79,57 +79,49 @@ function updateChat(){
 
 //send the message
 function sendChat(message, nickname) {       
-   
-     $.ajax({
-		   type: "POST",
-		   url: "process.php",
-		   data: {  
-		   			'function': 'send',
-					'message': message,
-					'nickname': nickname,
-					'file': file
-					},
-		   dataType: "json",
-		   success: function(data){
-			
-		   },
-		});
-
+	$.ajax({
+		type: "POST",
+		url: "process.php",
+		data: {  
+			'function': 'send',
+			'message': message,
+			'nickname': nickname,
+			'file': file
+		},
+		dataType: "json",
+		success: function(data){
+		},
+	});
 }
 
 function trimstr(s, limit) {
-    return s.substring(0, limit);
+	return s.substring(0, limit);
 } 
 
 function getuserlist(room, username) {
-
 	roomid = room;
 	usernameid = username;
 	
-	 $.ajax({
-        type: "GET",
-        url: "userlist.php",
-        data: {  
-        		'room' : room,
-        		'username': username,
-        		'current' : numOfUsers
-        		
-        		},
-        dataType: "json",
-        cache: false,
-        success: function(data) {
-        
-        	if (numOfUsers != data.numOfUsers) {
-        		numOfUsers = data.numOfUsers;
-        		var list = "<li class='head'>Room Chatters</li>";
-        		for (var i = 0; i < data.userlist.length; i++) {  
-                   list += "<li>"+ data.userlist[i] +"</li>";
-                }
-        		$('#userlist').html($("<ul>"+ list +"</ul>"));
-        	}
-        	
-            setTimeout('getuserlist(roomid, usernameid)', 1);
-           
-        },
-    });
+	$.ajax({
+		type: "GET",
+		url: "userlist.php",
+		data: {  
+			'room' : room,
+			'username': username,
+			'current' : numOfUsers
+		},
+		dataType: "json",
+		cache: false,
+		success: function(data) {
+			if (numOfUsers != data.numOfUsers) {
+				numOfUsers = data.numOfUsers;
+				var list = "<li class='head'>Room Chatters</li>";
+				for (var i = 0; i < data.userlist.length; i++) {  
+					list += "<li>"+ data.userlist[i] +"</li>";
+				}
+				$('#userlist').html($("<ul>"+ list +"</ul>"));
+			}
+			setTimeout('getuserlist(roomid, usernameid)', 1);
+		},
+	});
 }
