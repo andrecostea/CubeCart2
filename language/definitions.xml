@@ -82,6 +82,7 @@
     <string name="your_addressbook" introduced="5.0.0"><![CDATA[Your Address Book]]></string>
     <string name="your_details" introduced="5.0.0"><![CDATA[Your Details]]></string>
     <string name="your_downloads" introduced="5.0.0"><![CDATA[Your Digital Downloads]]></string>
+    <string name="your_webrtc" introduced="5.0.0"><![CDATA[Your WebRTC]]></string>
     <string name="your_order" introduced="5.0.0"><![CDATA[Your Order]]></string>
     <string name="your_orders" introduced="5.0.0"><![CDATA[Your Order History]]></string>
     <string name="your_orders_explained" introduced="5.0.0"><![CDATA[Your past and existing orders are listed here.]]></string>

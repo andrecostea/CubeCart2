@@ -68,6 +68,7 @@ include ("jpgraph/src/jpgraph_bar.php");
 
 	$graph->Add($bplot);
 
+	//$graph->xaxis->title->Set("X-title");
 	$graph->yaxis->title->Set("no. of visitors");
 
 	$graph->title->SetFont(FF_FONT1,FS_BOLD);

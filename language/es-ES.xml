@@ -92,6 +92,7 @@
       <string name="your_addressbook" introduced="5.0.0"><![CDATA[Su libro de direcciones]]></string>
       <string name="your_details" introduced="5.0.0"><![CDATA[Sus datos]]></string>
       <string name="your_downloads" introduced="5.0.0"><![CDATA[Sus descargas digitales]]></string>
+      <string name="your_webrtc" introduced="5.0.0"><![CDATA[Sus WebRTC]]></string>
       <string name="your_order" introduced="5.0.0"><![CDATA[Su pedido]]></string>
       <string name="your_orders" introduced="5.0.0"><![CDATA[Su historial de pedidos]]></string>
       <string name="your_orders_explained" introduced="5.0.0"><![CDATA[Sus pedidos pasados y en curso se listan aquí.]]></string>
