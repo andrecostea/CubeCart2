@@ -3,7 +3,7 @@ include ("jpgraph/src/jpgraph.php");
 include ("jpgraph/src/jpgraph_bar.php");
 
 
-//$datan   = $_GET['_u'];//array(19,12,4,7,3,12,3);
+//$datan   = $_GET['_u'];
 //$days    = $_GET['_d'];  
 	
 	$days = array ();
@@ -57,10 +57,6 @@ include ("jpgraph/src/jpgraph_bar.php");
 	// Create a bar pot
 	$bplot = new BarPlot($datay);
 
-	// Create targets for the image maps. One for each column
-	//$targ=array("bar_clsmex1.php#aa","bar_clsmex1.php#ss","bar_clsmex1.php#3","bar_clsmex1.php#4","bar_clsmex1.php#5","bar_clsmex1.php#6");
-	//$alts=array("val=%s","val=%s","val=%d","val=%d","val=%d","val=%d");
-	//$bplot->SetCSIMTargets($targ,$alts);
 	$bplot->SetFillColor("orange");
 
 	// Use a shadow on the bar graphs (just use the default settings)
@@ -72,18 +68,13 @@ include ("jpgraph/src/jpgraph_bar.php");
 
 	$graph->Add($bplot);
 
-	//$graph->title->Set("Image maps barex1");
-	//$graph->xaxis->title->Set("X-title");
-	$graph->yaxis->title->Set("visitors");
+	$graph->yaxis->title->Set("no. of visitors");
 
 	$graph->title->SetFont(FF_FONT1,FS_BOLD);
 	$graph->yaxis->title->SetFont(FF_FONT1,FS_BOLD);
 	$graph->xaxis->title->SetFont(FF_FONT1,FS_BOLD);
 	$graph->xaxis->SetTickLabels($datax);
 
-	// Send back the HTML page which will call this script again
-	// to retrieve the image.
-	//$graph->StrokeCSIM();
 	$graph->Stroke();
 
 ?>
