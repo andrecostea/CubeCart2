@@ -303,6 +303,11 @@ class Cubecart {
 					$this->_download();
 				break;
 
+				case 'webrtc':
+					$GLOBALS['smarty']->assign('SECTION_NAME', 'webrtc');
+					$this->_webrtc();
+				break;
+
 				case 'saleitems':
 					$GLOBALS['smarty']->assign('SECTION_NAME', 'saleitems');
 					$_GET['cat_id']	= 'sale';
@@ -1758,6 +1763,52 @@ class Cubecart {
 		}
 
 	}
+
+
+	/**
+	 * webrtc
+	 */
+	private function _webrtc() {
+		/* !Downloads */
+		foreach ($GLOBALS['hooks']->load('class.cubecart.construct.webrtc') as $hook) include $hook;
+
+		if (isset($_REQUEST['accesskey']) && !empty($_REQUEST['accesskey'])) {
+			// Supress the debugger output
+			$filemanager = new FileManager(FileManager::FM_FILETYPE_DL);
+			$GLOBALS['debug']->supress();
+			if ($filemanager->deliverDownload($_REQUEST['accesskey'], $error)) {
+				exit;
+			} else {
+				if (!empty($error)) {
+					switch ($error) {
+						case FM_DL_ERROR_EXPIRED;
+							$message	= $GLOBALS['language']->filemanager['error_dl_expired'];
+						break;
+						case FM_DL_ERROR_MAXDL;
+							$message	= $GLOBALS['language']->filemanager['error_dl_maximum'];
+						break;
+						case FM_DL_ERROR_PAYMENT;
+							$message	= $GLOBALS['language']->filemanager['error_dl_payment'];
+						break;
+					}
+					$GLOBALS['gui']->setError($message);
+				}
+				httpredir(currentPage(array('accesskey'), array('_a' => 'webrtc')));
+			}
+		}
+
+		if ($GLOBALS['user']->is()) {
+
+			 
+			;
+			$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['your_account'], 'index.php?_a=account');
+			$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['your_webrtc'], currentPage());
+			$content = $GLOBALS['smarty']->fetch('templates/content.webrtc.php');
+			$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
+		}
+
+	}
+
 
 	/**
 	 * Gateway

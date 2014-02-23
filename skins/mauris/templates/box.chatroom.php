@@ -6,7 +6,7 @@
 <script>
 function pop_chatroom()
 {
-    window.open("http://localhost/CubeCart2/index.php?_a=chatroom");
+    window.location.href="http://localhost/CubeCart2/index.php?_a=chatroom";
 }
 function pop_share()
 {

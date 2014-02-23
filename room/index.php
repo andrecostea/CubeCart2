@@ -41,8 +41,7 @@ $current_user = $_SESSION['CHATROOM_USER_EMAIL'];
     <div id="page-wrap">
 
     	<div id="header">
-        	<h1><a href="/CubeCart2/images/logo.jpg">cubecart</a></h1>
-        	<div id="you"><span>Logged in as:</span> <?php echo $_SESSION['CHATROOM_USER_FIRST']?></div>
+        
 		<h4><a href="http://localhost/CubeCart2/chatroom_index.php">back to room list</a></h4>
         </div>
         
