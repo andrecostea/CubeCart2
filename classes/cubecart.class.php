@@ -1955,13 +1955,15 @@ class Cubecart {
 
 	private function _statistics(){
 		$statistics  = Statistics::getInstance();
-		$stats  = $statistics -> getPrevLogin($GLOBALS['user']->get('email'),$GLOBALS['user']->get('customer_id'));
-		$statslt  = $statistics -> getLastTransaction($GLOBALS['user']->get('customer_id'));
+		$customer_id = $GLOBALS['user']->get('customer_id');
+		$stats  = $statistics -> getPrevLogin($GLOBALS['user']->get('email'),$customer_id);
+		$statslt  = $statistics -> getLastTransaction($customer_id);
 		//$timesone = new Date().getTimezoneOffset();
 		$stats = array_merge($statistics -> getOnlineUsers(), $stats);
 		$stats = array_merge($statslt, $stats);
 		$stats = array_merge($statistics -> getVisitorsPCountry(), $stats);
 		$stats = array_merge($statistics -> getVisitorsPDay(), $stats);
+		$stats = array_merge($statistics -> getUsersCountryX($customer_id), $stats);
 //		$stats = array_merge( array('online_users'  => 1,), $stats);
 		$GLOBALS['smarty']->assign('STATISTICS', $stats);
 	        $content = $GLOBALS['smarty']->fetch('templates/content.statistics.php');

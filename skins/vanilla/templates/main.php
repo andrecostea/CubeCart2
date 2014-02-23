@@ -47,6 +47,7 @@
 		{$CATEGORIES}
 		{$SALE_ITEMS}
 		{if isset($POPULAR_PRODUCTS)}{$POPULAR_PRODUCTS}{/if}
+	        {$STATISTICS}
 
 	  </div>
 	  <div class="sidebar" id="sidebar_right">
@@ -59,7 +60,6 @@
           {$LIVE_CHAT_ROOM}
 		</div>
 		{$MAIL_LIST}
-	        {$STATISTICS}
 	  </div>
 	  <div id="page_content">
 	    <div id="header">

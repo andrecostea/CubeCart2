@@ -58,6 +58,8 @@
 	  </div>
 	  <div class="sidebar" id="sidebar_left">
 		{$CATEGORIES}
+		<br/>
+		{$STATISTICS}
 	  </div>
 	  <div id="page_content">
 		{include file='templates/box.errors.php'}
@@ -74,7 +76,6 @@
 		{if isset($POPULAR_PRODUCTS)}{$POPULAR_PRODUCTS}{/if}
 		{$SALE_ITEMS}
 		{$MAIL_LIST}
-		{$STATISTICS}
 	  </div>
 
   </div>
