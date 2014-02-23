@@ -20,7 +20,7 @@ $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         var user_invitation = '<?php echo $_SESSION['CHATROOM_USER_EMAIL'];?>';
-	setTimeout("self.location.reload();",2000);
+	setTimeout("self.location.reload();",10000);
     </script>
     <script type="text/javascript" src="room/invitationFunc.js"></script>
 </head>

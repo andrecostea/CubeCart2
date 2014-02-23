@@ -15,7 +15,7 @@ $file = "";
 while ($rooms = mysql_fetch_array($roomResults)) {
     $file = $rooms['file'];
 }
-
+$current_user = $_SESSION['CHATROOM_USER_EMAIL'];
 ?>
 
 <html>
@@ -31,6 +31,7 @@ while ($rooms = mysql_fetch_array($roomResults)) {
     	chat.getUsers(<?php echo "'" . $name ."','" .$_SESSION['CHATROOM_USER_EMAIL'] . "'"; ?>);
         var name = '<?php echo $_SESSION['CHATROOM_USER_FIRST'];?>';
         var room_to_invite = '<?php echo $name; ?>';
+	var user_to_leave = '<?php echo $current_user; ?>';
     </script>
     <script type="text/javascript" src="settings.js"></script>
     <script type="text/javascript" src="inviting.js"></script>
@@ -42,13 +43,15 @@ while ($rooms = mysql_fetch_array($roomResults)) {
     	<div id="header">
         	<h1><a href="/CubeCart2/images/logo.jpg">cubecart</a></h1>
         	<div id="you"><span>Logged in as:</span> <?php echo $_SESSION['CHATROOM_USER_FIRST']?></div>
+		<h4><a href="http://localhost/CubeCart2/chatroom_index.php">back to room list</a></h4>
         </div>
         
         <div id="section">
             <div id="invite-user-div">
-				<label>Input email: </label>
+		<label>Input email: </label>
             	<input type="text" name="user" id="invite_user"/>
-	            <button id="invite" name="invite" onclick="inviteUserFunc()">Invite Friends</button>
+		<button id="invite" name="invite" onclick="inviteUserFunc()">Invite Friends</button>
+		<button id="quit_room" name="quit_room" onclick="quitRoom()">Quit This Room</button>
             </div>
             <div id="left-room">
             </div>

@@ -337,7 +337,8 @@ class Cubecart {
                 case 'chatroom':
                     if($GLOBALS['user']->is()){
                         $_SESSION['CHATROOM_USER_ID'] = $GLOBALS['user']->getId();
-                        httpredir('chatroom_index.php');
+                        $content = $GLOBALS['smarty']->fetch('templates/content.chatroom.php');
+			$GLOBALS['smarty']->assign('PAGE_CONTENT', $content);
                     } else {
                         $GLOBALS['gui']->setError($GLOBALS['language']->account['login_remind']);
                     }
