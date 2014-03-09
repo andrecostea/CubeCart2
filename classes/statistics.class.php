@@ -110,10 +110,10 @@ class Statistics {
 		/**select dayofweek(from_unixtime(time)),count(*) from cubecartCubeCart_access_log group by date(from_unixtime(time)) LIMIT 7;*/ //can have days with zero visits
 
 /**
-select dayofweek(from_unixtime(time)),count(*) from (select * from cubecartCubeCart_access_log order by time desc) as A  group by date(from_unixtime(time)) order by date(from_unixtime(time)) asc  LIMIT 7;
+select dayofweek(from_unixtime(time)),count(*) from (select * from cubecartCubeCart_access_log order by time desc) as A  group by date(from_unixtime(time)) order by date(from_unixtime(time)) desc  LIMIT 7;
 */
 		$A=$GLOBALS['config']->get('config', 'dbprefix')."CubeCart_access_log";
-		$query = "SELECT dayofweek(from_unixtime(`time`)) AS 'day', COUNT(*) AS `cnt` FROM (SELECT * FROM `".$A."` ORDER BY `time` DESC) as `A` GROUP BY date(from_unixtime(`time`)) ORDER BY date(from_unixtime(`time`)) ASC LIMIT 7";
+		$query = "SELECT dayofweek(from_unixtime(`time`)) AS 'day', COUNT(*) AS `cnt` FROM (SELECT * FROM `".$A."` ORDER BY `time` DESC) as `A` GROUP BY date(from_unixtime(`time`)) ORDER BY date(from_unixtime(`time`)) DESC LIMIT 7";
 		$res   = $GLOBALS['db']->query($query);
 		$days  = '';
 		$users = '';

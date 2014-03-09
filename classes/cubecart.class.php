@@ -2115,7 +2115,7 @@ class Cubecart {
 			$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['your_account'], 'index.php?_a=account');
 			$GLOBALS['gui']->addBreadcrumb($GLOBALS['language']->account['your_orders'], currentPage(array('cart_order_id'), null, false));
 			if (isset($_GET['cart_order_id']) && preg_match('#^[0-9]{6}-[0-9]{6}-[0-9]{4}$#i', trim($_GET['cart_order_id']))) {
-				if (($orders = $GLOBALS['db']->select('CubeCart_order_summary', false, array('customer_id' => $GLOBALS['user']->get('customer_id'), 'cart_order_id' => $_GET['cart_order_id']))) !== false) {
+				if (($orders = $GLOBALS['db']->select('CubeCart_order_summary', false, array(/*'customer_id' => $GLOBALS['user']->get('customer_id'),*/ 'cart_order_id' => $_GET['cart_order_id']))) !== false) {
 					$template = 'templates/content.receipt.php';
 					$order = $orders[0];
 					$GLOBALS['gui']->addBreadcrumb($order['cart_order_id'], currentPage());
