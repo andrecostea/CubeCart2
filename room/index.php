@@ -7,7 +7,8 @@ $getRooms = "SELECT * FROM cubecartCubeCart_chatrooms WHERE name = '$name'";
 $roomResults = mysql_query($getRooms);
 
 if (mysql_num_rows($roomResults) < 1) {
-    header("Location: ../chatroom_index.php");
+    //    header("Location: ../chatroom_index.php");
+    header("Location: " . $name);
     die();
 }
 
