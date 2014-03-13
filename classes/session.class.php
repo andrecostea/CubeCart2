@@ -434,7 +434,7 @@ class Session {
 		$old = $this->getId();
 
 		$this->_state = 'restart';
-		session_regenerate_id(true);
+        session_regenerate_id(true);
 		$GLOBALS['db']->update('CubeCart_sessions', array('session_id' => session_id()), array('session_id' => $old), false);
 		$this->_state = 'active';
 
@@ -581,12 +581,29 @@ class Session {
 
 	/**
 	 * Start session
-	 */
+     */
+    private function _generateSession(){
+        if( $max = $GLOBALS['db']->select('CubeCart_phpsessionid', array('session_id')) ) {
+            $oldSessionId = $max[0]['session_id'];
+            $newSessionId = substr(md5($oldSessionId), 0, 26);
+            session_id($newSessionId);
+            $GLOBALS['db']->update('CubeCart_phpsessionid', array('session_id'=>$newSessionId), array('session_id'=>$oldSessionId));
+        } else {
+            $newSessionId = substr(md5(time()), 0, 26);
+            session_id($newSessionId);
+            $GLOBALS['db']->insert('CubeCart_phpsessionid', array('session_id'=>$newSessionId));
+        }
+    }
 	private function _start() {
-		$session_name = session_name();
+        $session_name = session_name();
 		if(isset($_GET[$session_name]) && !empty($_GET[$session_name])) {
 			session_id($_GET[$session_name]);
-		}
+        }
+        if ( isset($_COOKIE['PHPSESSID']) && !empty($_COOKIE['PHPSESSID']) ) {
+            session_id($_COOKIE['PHPSESSID']);
+        }else{
+            $this->_generateSession();
+        }
 		session_cache_limiter('none');
 		session_start();
 		// Increase session length on each page load. NOT IE however as we all know it is a wingy PITA
