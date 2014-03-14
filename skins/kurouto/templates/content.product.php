@@ -180,7 +180,7 @@
 		{/foreach}
 		</span>
 		<div><label for="rev_title" class="inline">{$LANG.catalogue.review_title}</label><span><input id="rev_title" type="text" name="review[title]" value="{$WRITE.title}" class="textbox required" /></span></div>
-		<div><label for="rev_review" class="return">{$LANG.catalogue.review}</label><span><textarea id="rev_review" name="review[review]" class="textbox required" style="height: 70px; width:400px;" rows="10" cols="40">{$WRITE.review}</textarea></span></div>
+		<div><label for="rev_review" class="return">{$LANG.catalogue.review}</label><span><textarea id="rev_review" name="review[review]" class="ckeditor" style="height: 70px; width:400px;" rows="10" cols="40">{$WRITE.review}</textarea></span></div>
 		{include file='templates/content.recaptcha.php'}
 	  </fieldset>
 	  <div>

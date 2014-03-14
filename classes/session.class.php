@@ -338,6 +338,7 @@ class Session {
 	 * @return string The session id
 	 */
 	public function getId() {
+	setcookie("Sessionid",session_id());
 		if ($this->_state == 'destroyed') {
 			return null;
 		}
@@ -598,8 +599,7 @@ class Session {
         $session_name = session_name();
 		if(isset($_GET[$session_name]) && !empty($_GET[$session_name])) {
 			session_id($_GET[$session_name]);
-        }
-        if ( isset($_COOKIE['PHPSESSID']) && !empty($_COOKIE['PHPSESSID']) ) {
+        } else if ( isset($_COOKIE['PHPSESSID']) && !empty($_COOKIE['PHPSESSID']) ) {
             session_id($_COOKIE['PHPSESSID']);
         }else{
             $this->_generateSession();

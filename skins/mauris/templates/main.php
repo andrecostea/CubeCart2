@@ -92,6 +92,10 @@
   {foreach from=$JS_SCRIPTS key=k item=script}
   <script type="text/javascript" src="{$STORE_URL}/{$script|replace:'\\':'/'}"></script>
   {/foreach}
+
+<!-- Include CKEditor -->
+				  <script type="text/javascript" src="includes/ckeditor/ckeditor.js"></script>
+				  <script type="text/javascript" src="includes/ckeditor/adapters/jquery.js"></script>
   
   {if $COOKIE_DIALOGUE}
   <form action="{$VAL_SELF}" class="cookies-notify" method="POST">

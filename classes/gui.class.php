@@ -292,7 +292,7 @@ class GUI {
                     $link_array[]=$tag->page;
                 }
                 
-                echo "<a id='ad_link' target='_blank'><img id='ad_img'/></a>";
+                echo "<a id='ad_link' target='_blank'><iframe id='ad_img'></iframe></a>";
                 echo "<script>";
                 echo " var img_array=new Array();";
                 echo " var link_array=new Array();";
@@ -309,7 +309,7 @@ class GUI {
                 }
                 echo "var count=0;";
                 echo "total=".(string)$count.";";
-                echo "setInterval(function(){var img=document.getElementById('ad_img'); img.src=img_array[count%total];  var a=document.getElementById('ad_link'); a.href=link_array[count%total];count=count+1;},2000);";
+                echo "setInterval(function(){var img=document.getElementById('ad_img'); img.src=img_array[count%total];  var a=document.getElementById('ad_link'); a.href=link_array[count%total];count=count+1;},10000);";
                
 
 

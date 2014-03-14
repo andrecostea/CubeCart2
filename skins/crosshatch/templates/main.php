@@ -89,7 +89,13 @@
 </div>
  {if isset($DEBUG_INFO)}{$DEBUG_INFO}{/if} {include file='js/common.html'} {if isset($JANRAIN)}{$JANRAIN}{/if} {if isset($LIVE_HELP)}{$LIVE_HELP}{/if} {foreach from=$JS_SCRIPTS key=k item=script}
 <script type="text/javascript" src="{$STORE_URL}/{$script|replace:'\\':'/'}"></script>
- {/foreach} {if $COOKIE_DIALOGUE}
+ {/foreach}
+
+<!-- Include CKEditor -->
+				  <script type="text/javascript" src="includes/ckeditor/ckeditor.js"></script>
+				  <script type="text/javascript" src="includes/ckeditor/adapters/jquery.js"></script>
+
+ {if $COOKIE_DIALOGUE}
 <form action="{$VAL_SELF}" class="cookies-notify" method="POST">
 	<p>
 		{$LANG.notification.cookie_dialogue|replace:'%s':{$CONFIG.store_name}}

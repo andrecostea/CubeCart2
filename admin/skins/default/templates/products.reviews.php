@@ -22,7 +22,7 @@
 	  <span class="actions">
 		<input type="hidden" class="toggle" name="approve[{$review.id}]" id="approve_{$review.id}" value="{$review.approved}" />
 		<a href="{$review.edit}" class="edit" title="{$LANG.common.edit}"><img src="{$SKIN_VARS.admin_folder}/skins/{$SKIN_VARS.skin_folder}/images/edit.png" alt="{$LANG.common.edit}" /></a>
-		<a href="{$review.delete}" class="delete" title="{$LANG.notification.confirm_delete}"><img src="{$SKIN_VARS.admin_folder}/skins/{$SKIN_VARS.skin_folder}/images/delete.png" alt="{$LANG.common.delete}" /></a>
+
 	  </span>
 	  <div><strong>{$review.title}</strong></div>
 	  <p>{$review.review}</p>
@@ -73,7 +73,7 @@
 	<div><label for="review_name">{$LANG.common.name}</label><span><input type="text" name="review[name]" id="review_name" value="{$REVIEW.name}" class="textbox" /></span></div>
 	<div><label for="review_email">{$LANG.common.email}</label><span><input type="text" name="review[email]" id="review_email" value="{$REVIEW.email}" class="textbox" /></span></div>
 	<div><label for="review_title">{$LANG.documents.document_title}</label><span><input type="text" name="review[title]" id="review_title" value="{$REVIEW.title}" class="textbox" /></span></div>
-	<div><label for="review_content">{$LANG.documents.document_content}</label><span><textarea name="review[review]" id="review_content" class="textbox">{$REVIEW.review}</textarea></span></div>
+	<div><label for="review_content">{$LANG.documents.document_content}</label><span><textarea name="review[review]" id="review_content" class="ckeditor" style="height: 70px; width:400px;" rows="10" cols="40">{$REVIEW.review}</textarea></span></div>
 	<div><label for="">{$LANG.documents.rating}</label><span>
 	{section name=i start=1 loop=6 step=1}<input type="radio" name="rating" value="{$smarty.section.i.index}" class="rating" {if $REVIEW.rating == $smarty.section.i.index}checked="checked"{/if} />{/section}
 	&nbsp;</span>

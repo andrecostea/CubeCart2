@@ -2336,6 +2336,8 @@ class Cubecart {
 				$error = true;
 			}
 
+			$record['review']=htmlspecialchars_decode($record['review']);
+
 			if (!$error) {
 				if (($GLOBALS['db']->insert('CubeCart_reviews', $record)) !== false) {
 					$GLOBALS['gui']->setNotify($GLOBALS['language']->catalogue['notify_review_submit']);
