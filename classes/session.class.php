@@ -646,10 +646,10 @@ class Session {
 			$this->set('ip_address', $ip, 'client');
 			$this->set('useragent', $_SERVER['HTTP_USER_AGENT'], 'client');
 		} else {
-			if ($current[0]['useragent'] !== $_SERVER['HTTP_USER_AGENT']) {
-				$this->destroy();
-				trigger_error('Stored session data did not match DB record. Session aborted as possible session hijack. Old IP Address: \''.$current[0]['ip_address'].'\' New IP Address: \''.$ip.'\' Old User Agent: \''.$current[0]['useragent'].'\' New User Agent: \''.$_SERVER['HTTP_USER_AGENT'].'\'', E_USER_WARNING);
-			}
+		//	if ($current[0]['useragent'] !== $_SERVER['HTTP_USER_AGENT']) {
+		//		$this->destroy();
+		//		trigger_error('Stored session data did not match DB record. Session aborted as possible session hijack. Old IP Address: \''.$current[0]['ip_address'].'\' New IP Address: \''.$ip.'\' Old User Agent: \''.$current[0]['useragent'].'\' New User Agent: \''.$_SERVER['HTTP_USER_AGENT'].'\'', E_USER_WARNING);
+		//	}
 			$this->set('ip_address', $current[0]['ip_address'], 'client');
 			$this->set('useragent', $current[0]['useragent'], 'client');
 		}
