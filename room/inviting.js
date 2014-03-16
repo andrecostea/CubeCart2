@@ -33,7 +33,7 @@ function quitRoom() {
 		cache: false,
 		success: function(data) {
 			alert(data.info);
-			window.location.href="http://localhost/CubeCart2/chatroom_index.php";
+			window.location.href="http://www.group17.com/CubeCart2/chatroom_index.php";
 		},
 	});
 }

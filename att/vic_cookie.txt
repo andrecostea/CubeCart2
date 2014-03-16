@@ -1,0 +1,1 @@
+u=aa; log_2_ad=yes; login=yes; current_name=student@student.com

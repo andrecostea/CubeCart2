@@ -6,14 +6,14 @@
 <script>
 function pop_chatroom()
 {
-    window.location.href="http://localhost/CubeCart2/index.php?_a=chatroom";
+    window.location.href="http://www.group17.com/CubeCart2/index.php?_a=chatroom";
 }
 function pop_share()
 {
-    window.open("http://localhost/CubeCart2/share.html");
+    window.open("http://www.group17.com/CubeCart2/share.html");
 }
 function pop_ad()
 {
-    window.open("http://localhost/CubeCart2/createAd/");
+    window.open("http://www.group17.com/CubeCart2/createAd/");
 }
 </script>

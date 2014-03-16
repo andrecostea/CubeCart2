@@ -56,7 +56,7 @@ $_SESSION['CHATROOM_USER_FIRST'] = $user['first_name'];
                             	$numOfUsers = mysql_num_rows($query);
                     ?>
                     <li>
-                    <a href="room/?name=<?php echo $rooms['name']?>"><?php echo $rooms['name'] . "<span>Users chatting: <strong>" . $numOfUsers . "</strong></span>" ?></a>
+                    <a href="room/?name=<?php echo $rooms['name']?>&user=1"><?php echo $rooms['name'] . "<span>Users chatting: <strong>" . $numOfUsers . "</strong></span>" ?></a>
                     </li>
                     <?php endif; endwhile; ?>
                 </ul>

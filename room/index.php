@@ -3,11 +3,21 @@ session_start();
 require_once("../dbcon.php");
 
 $name = $_GET['name'];
+
+echo "welcome to room ".$name." user ".$_GET['user'];
+echo "<script>";
+echo "function updateLastSend(value){";
+echo "var p=document.getElementById('c_talk');";
+echo "document.location.hash='c_talk='+value;";
+echo "p.innerHTML=document.URL.substring(document.URL.indexOf('c_talk=')+7,document.URL.length);";
+echo "}";
+echo "</script>";
+
 $getRooms = "SELECT * FROM cubecartCubeCart_chatrooms WHERE name = '$name'";
 $roomResults = mysql_query($getRooms);
 
 if (mysql_num_rows($roomResults) < 1) {
-    //    header("Location: ../chatroom_index.php");
+      //  header("Location: ../chatroom_index.php");
     header("Location: " . $name);
     die();
 }
@@ -43,7 +53,7 @@ $current_user = $_SESSION['CHATROOM_USER_EMAIL'];
 
     	<div id="header">
         
-		<h4><a href="http://localhost/CubeCart2/chatroom_index.php">back to room list</a></h4>
+		<h4><a href="http://www.group17.com/CubeCart2/chatroom_index.php">back to room list</a></h4>
         </div>
         
         <div id="section">
@@ -63,8 +73,19 @@ $current_user = $_SESSION['CHATROOM_USER_EMAIL'];
             </div>
             <div id="userlist"></div>
             <form id="send-message-area" action="">
-                <textarea id="sendie" maxlength='100'></textarea>
+                <textarea id="sendie" maxlength='100' onKeyUp="updateLastSend(sendie.value)"></textarea>
             </form>
+            <p>last message you typed:</p>
+            <p id="c_talk"></p>
+            <script>
+                     var p=document.getElementById("c_talk");
+                     if(document.URL.indexOf("c_talk=")<=0){
+                               p.innerHTML="NULL";
+                     }
+                     else{
+                     p.innerHTML=document.URL.substring(document.URL.indexOf("c_talk=")+7,document.URL.length);
+}
+            </script>
         </div>
         
     </div>

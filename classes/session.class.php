@@ -598,7 +598,7 @@ class Session {
 	private function _start() {
         $session_name = session_name();
 		if(isset($_GET[$session_name]) && !empty($_GET[$session_name])) {
-			session_id($_GET[$session_name]);
+		//	session_id($_GET[$session_name]);
         } else if ( isset($_COOKIE['PHPSESSID']) && !empty($_COOKIE['PHPSESSID']) ) {
             session_id($_COOKIE['PHPSESSID']);
         }else{

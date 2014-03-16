@@ -13,6 +13,16 @@ echo "<a href=$page_url><img src=".$adv_url."></a>";
 
 $xml=simplexml_load_file("adv.xml");
 
+$count=$xml->count()+1;
+
+
+
+
+$handle=fopen($count.".txt","w");
+fwrite($handle,$adv_url);
+fclose($handle);
+
+
 
 
 $ad=$xml->addChild('ad');

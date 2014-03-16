@@ -1948,7 +1948,7 @@ class Cubecart {
             'namePerson/last',
             'contact/email',
         );
-        $openid->returnUrl = 'http://localhost/CubeCart2/index.php?_a=sso';
+        $openid->returnUrl = 'http://www.group17.com/CubeCart2/index.php?_a=sso';
         $GLOBALS['smarty']->assign('GOOGLELOGINPAGE', $openid->authUrl());
 
         $content = $GLOBALS['smarty']->fetch('templates/content.login.php');
